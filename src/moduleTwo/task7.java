@@ -13,5 +13,11 @@ public class task7 {
             }
         }
         System.out.println(sum);
+        sum = 0;
+        for (int i = 1; i < 100; i += 2) {
+            sum += i;
+        }
+        System.out.println(sum);
+        System.out.println((1 + 99) / 2 * 50);
     }
 }
