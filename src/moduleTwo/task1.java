@@ -9,11 +9,10 @@ public class task1 {
     public static void main(String[] args) {
         double start = 10;
         double sum = 0;
-        double interest = 0.10;
-        int days = 7;
-        for (int i = 0; i < days; i++) {
+
+        for (int i = 0; i < 7; i++) {
             sum += start;
-            start *= (1 + interest);
+            start *= (1 + 0.1);
         }
         System.out.println(sum);
     }
