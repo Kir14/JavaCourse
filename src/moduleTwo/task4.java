@@ -14,10 +14,16 @@ public class task4 {
         a = scanner.nextInt();
         System.out.print("b = ");
         b = scanner.nextInt();
+        System.out.println("way one:");
         int sum = 0;
-        while (b > 0) {
+        for (int i = 0; i < b; i++) {
             sum += a;
-            b--;
+        }
+        System.out.println(sum);
+        System.out.println("way two:");
+        sum = 0;
+        for (; b > 0; b--) {
+            sum += a;
         }
         System.out.println(sum);
     }
