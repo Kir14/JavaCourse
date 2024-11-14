@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        //System.out.println("Exersice1 = " + exersice1() + " км");
+        System.out.println("Exersice1 = " + exersice1() + " км");
 
-        /*System.out.println("Exersice2 ");
-        exersice2();*/
+        System.out.println("Exersice2 ");
+        exersice2();
 
         System.out.println("Exersice3 = " + exersice3());
     }
