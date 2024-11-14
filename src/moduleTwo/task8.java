@@ -20,7 +20,7 @@ public class task8 {
             for (int j = 0; j < i; j++) {
                 str.append("*");
             }
-            System.out.printf("%4s%n", str.toString());
+            System.out.printf("%4s%n", str);
         }
 
         for (int i = 4; i >= 1; i--) {
@@ -28,7 +28,7 @@ public class task8 {
             for (int j = 0; j < i; j++) {
                 str.append("*");
             }
-            System.out.printf("%4s%n", str.toString());
+            System.out.printf("%4s%n", str);
         }
     }
 }
