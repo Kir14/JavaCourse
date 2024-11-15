@@ -1,7 +1,5 @@
 package moduleThree.HomeWork.Cat.src;
 
-import moduleThree.Cat.src.CatColors;
-
 public class Cat {
     private static final int COUNT_EYES = 2;
     private static final double MIN_WEIGHT = 1000.0;
@@ -24,6 +22,13 @@ public class Cat {
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
+        originWeight = weight;
+        color = CatColors.values()[(int) (Math.random() * 3)];
+        count++;
+    }
+
+    public Cat(double weight) {
+        this.weight=weight;
         originWeight = weight;
         color = CatColors.values()[(int) (Math.random() * 3)];
         count++;

@@ -44,6 +44,18 @@ public class Loader
         cat3.pee();
         System.out.println(cat3.getWeight());
 
+        System.out.println("KITTENS");
+        Cat kitten1 = getKitten();
+        Cat kitten2 = getKitten();
+        Cat kitten3 = getKitten();
 
+        System.out.println(kitten2.getWeight());
+        kitten2.pee();
+        System.out.println(kitten2.getWeight());
+
+    }
+
+    private static Cat getKitten(){
+        return new Cat(1100.0);
     }
 }
