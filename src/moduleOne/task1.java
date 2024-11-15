@@ -10,9 +10,8 @@ import java.util.Scanner;
  */
 public class task1 {
     public static void main(String[] args) {
-        int n;
         Scanner scanner = new Scanner(System.in);
-        n = scanner.nextInt();
+        int n = scanner.nextInt();
         if (n == 0) {
             System.out.println("Ну это 0");
             return;
@@ -25,6 +24,20 @@ public class task1 {
             count++;
         }
 
-        System.out.println("Это " + count + "-значное " + (isPositive ? "положительное" : "отрицательное") + " число");
+        String str;
+        switch (count) {
+            case 1:
+                str = "Одно";
+                break;
+            case 2:
+                str = "Дву";
+                break;
+            case 3:
+                str = "Трех";
+                break;
+            default:
+                str = String.valueOf(count);
+        }
+        System.out.println("Это " + str + "-значное " + (isPositive ? "положительное" : "отрицательное") + " число");
     }
 }
