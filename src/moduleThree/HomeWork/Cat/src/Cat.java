@@ -28,7 +28,7 @@ public class Cat {
     }
 
     public Cat(double weight) {
-        this.weight=weight;
+        this.weight = weight;
         originWeight = weight;
         color = CatColors.values()[(int) (Math.random() * 3)];
         count++;
@@ -40,6 +40,10 @@ public class Cat {
 
     public CatColors getColor() {
         return color;
+    }
+
+    public void setColor(CatColors color) {
+        this.color = color;
     }
 
     private void checkDead() {
