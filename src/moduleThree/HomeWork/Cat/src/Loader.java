@@ -6,10 +6,14 @@ public class Loader
 {
     public static void main(String[] args)
     {
+        System.out.println(Cat.getCount());
+
         Cat cat1 = new Cat();
         Cat cat2 = new Cat();
         Cat cat3 = new Cat();
         Cat cat4 = new Cat();
+
+        System.out.println(Cat.getCount());
 
         System.out.println(cat1.getWeight());
         cat1.feed(10.0);
@@ -26,6 +30,8 @@ public class Loader
             cat4.meow();
         }
         System.out.println(cat4.getStatus());
+
+        System.out.println(Cat.getCount());
 
         System.out.println(cat2.getWeight());
         cat2.pee();
