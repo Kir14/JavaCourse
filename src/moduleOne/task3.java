@@ -13,7 +13,7 @@ public class task3 {
         Scanner scanner = new Scanner(System.in);
         n = scanner.nextInt();
         if (n > 0) {
-            n += 1;
+            n ++;
         } else if (n < 0) {
             n -= 2;
         } else {
