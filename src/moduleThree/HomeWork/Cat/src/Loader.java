@@ -27,5 +27,10 @@ public class Loader
         }
         System.out.println(cat4.getStatus());
 
+        System.out.println(cat2.getWeight());
+        cat2.pee();
+        System.out.println(cat2.getWeight());
+
+
     }
 }
