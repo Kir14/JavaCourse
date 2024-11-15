@@ -1,6 +1,12 @@
 package moduleThree.HomeWork.Cat.src;
 
 public class Cat {
+    private static int count;
+
+    static {
+        count = 0;
+    }
+
     private double originWeight;
     private double weight;
 
@@ -14,12 +20,38 @@ public class Cat {
         originWeight = weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+        count++;
 
     }
 
+    public static int getCount() {
+        return count;
+    }
+
+    private void checkDead() {
+        if (weight < minWeight) {
+            count--;
+        } else if (weight > maxWeight) {
+            count--;
+        }
+    }
+
+    public boolean isAlive() {
+        if (weight < minWeight) {
+            return false;
+        } else if (weight > maxWeight) {
+            return false;
+        }
+        return true;
+    }
+
     public void meow() {
-        weight = weight - 1;
-        System.out.println("Meow");
+        if (isAlive()) {
+            weight = weight - 1;
+            System.out.println("Meow");
+            checkDead();
+        }
+
     }
 
     public double getFoodEaten() {
@@ -27,17 +59,26 @@ public class Cat {
     }
 
     public void feed(Double amount) {
-        weight = weight + amount;
-        foodEaten += amount;
+        if (isAlive()) {
+            weight = weight + amount;
+            foodEaten += amount;
+            checkDead();
+        }
     }
 
     public void pee() {
-        weight -= 20;
-        System.out.println("Pee");
+        if (isAlive()) {
+            weight -= 20;
+            System.out.println("Pee");
+            checkDead();
+        }
     }
 
     public void drink(Double amount) {
-        weight = weight + amount;
+        if (isAlive()) {
+            weight = weight + amount;
+            checkDead();
+        }
     }
 
     public Double getWeight() {
