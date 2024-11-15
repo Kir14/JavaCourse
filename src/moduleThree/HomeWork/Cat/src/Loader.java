@@ -13,6 +13,9 @@ public class Loader
         Cat cat3 = new Cat();
         Cat cat4 = new Cat();
 
+        System.out.println(cat1.getColor());
+        System.out.println(cat3.getColor());
+
         System.out.println(Cat.getCount());
 
         System.out.println(cat1.getWeight());
