@@ -41,6 +41,13 @@ public class Cat {
         count++;
     }
 
+    public Cat(int weight, CatColors color){
+        this.weight = weight;
+        this.color = color;
+        this.originWeight = weight;
+        count++;
+    }
+
     public static int getCount() {
         return count;
     }
@@ -54,20 +61,14 @@ public class Cat {
     }
 
     private void checkDead() {
-        if (weight < MIN_WEIGHT) {
-            count--;
-        } else if (weight > MAX_WEIGHT) {
+        String status = getStatus();
+        if ("Dead".equals(status) || "Exploded".equals(status)) {
             count--;
         }
     }
 
     public boolean isAlive() {
-        if (weight < MIN_WEIGHT) {
-            return false;
-        } else if (weight > MAX_WEIGHT) {
-            return false;
-        }
-        return true;
+        return !(weight < MIN_WEIGHT) && !(weight > MAX_WEIGHT);
     }
 
     public void meow() {

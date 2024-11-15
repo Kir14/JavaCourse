@@ -29,7 +29,7 @@ public class Loader {
         cat3.feed(100000.0);
         System.out.println(cat3.getStatus());
 
-        while (!Objects.equals(cat4.getStatus(), "Dead")) {
+        while (!"Dead".equals(cat4.getStatus())) {
             cat4.meow();
         }
         System.out.println(cat4.getStatus());
