@@ -2,16 +2,16 @@ package moduleThree.HomeWork.Cat.src;
 
 import java.util.Objects;
 
-public class Loader
-{
-    public static void main(String[] args)
-    {
+public class Loader {
+    public static void main(String[] args) {
         System.out.println(Cat.getCount());
 
         Cat cat1 = new Cat();
         Cat cat2 = new Cat();
         Cat cat3 = new Cat();
         Cat cat4 = new Cat();
+
+        Cat catCopy = new Cat(cat3);
 
         System.out.println(cat1.getColor());
         System.out.println(cat3.getColor());
@@ -53,9 +53,19 @@ public class Loader
         kitten2.pee();
         System.out.println(kitten2.getWeight());
 
+        System.out.println("Cat3");
+        System.out.println(cat3.getStatus());
+        System.out.println(cat3.getWeight());
+        System.out.println(cat3.getColor());
+
+        System.out.println("CatCopy");
+        System.out.println(catCopy.getStatus());
+        System.out.println(catCopy.getWeight());
+        System.out.println(catCopy.getColor());
+
     }
 
-    private static Cat getKitten(){
+    private static Cat getKitten() {
         return new Cat(1100.0);
     }
 }

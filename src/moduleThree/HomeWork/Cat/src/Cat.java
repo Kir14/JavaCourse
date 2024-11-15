@@ -34,6 +34,13 @@ public class Cat {
         count++;
     }
 
+    public Cat(Cat cat) {
+        this.weight=cat.weight;
+        this.color = cat.color;
+        this.originWeight=weight;
+        count++;
+    }
+
     public static int getCount() {
         return count;
     }
