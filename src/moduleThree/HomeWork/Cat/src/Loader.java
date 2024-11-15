@@ -1,6 +1,5 @@
 package moduleThree.HomeWork.Cat.src;
 
-import java.util.Objects;
 
 public class Loader {
     public static void main(String[] args) {
