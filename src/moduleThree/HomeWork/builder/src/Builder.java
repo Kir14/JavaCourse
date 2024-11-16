@@ -5,74 +5,32 @@ public class Builder {
     private String name;
     private Appartment appartment;
 
-
-    public class Appartment {
-
-        private int number;
-        private boolean windowOpen;
-        private boolean doorOpen;
-        private boolean lightOn;
-
-        {
-            windowOpen = false;
-            doorOpen = false;
-            lightOn = false;
-        }
-
-        public Appartment() {
-            number = 0;
-        }
-
-        public Appartment(int number) {
-            this.number = number;
-        }
-
-        public int getNumber() {
-            return number;
-        }
-
-        public boolean isWindowOpen() {
-            return windowOpen;
-        }
-
-        public boolean isDoorOpen() {
-            return doorOpen;
-        }
-
-        public boolean isLightOn() {
-            return lightOn;
-        }
-
-        @Override
-        public String toString() {
-            return "\nКвартира № " + number + "\nДверь " + (doorOpen ? "открыта" : "закрыта") +
-                    "\nОкно " + (windowOpen ? "открыто" : "закрыто") +
-                    "\nСвет " + (lightOn ? "включен" : "выключен");
-        }
-    }
-
-    public void openWindow() {
-        appartment.windowOpen = true;
-    }
-
-    public void closeWindow() {
-        appartment.windowOpen = false;
-    }
-
     public void turnOnLight() {
-        appartment.lightOn = true;
+        Light light = appartment.getLight();
+        if (light != null) {
+            light.turnOn();
+        }
     }
 
     public void turnOffLight() {
-        appartment.lightOn = false;
+        Light light = appartment.getLight();
+        if (light != null) {
+            light.turnOn();
+        }
     }
 
     public void openDoor() {
-        appartment.doorOpen = true;
+        Door door = appartment.getDoor();
+        if (door != null) {
+            door.openDoor();
+        }
     }
 
     public void closeDoor() {
-        appartment.doorOpen = false;
+        Door door = appartment.getDoor();
+        if (door != null) {
+            door.closeDoor();
+        }
     }
 
     public Builder(String name) {
