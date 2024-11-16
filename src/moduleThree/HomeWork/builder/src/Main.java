@@ -2,9 +2,9 @@ package moduleThree.HomeWork.builder.src;
 
 public class Main {
     public static void main(String[] args) {
-        Builder oleg = new Builder("Олег");
-        Appartment appartment1 = oleg.buildApartment(23);
-        Appartment appartment2 = oleg.buildApartment(54);
+
+        Appartment appartment1 = new Appartment(32);
+        Appartment appartment2 = new Appartment(565);;
 
         appartment1.setLight(new Light());
         appartment1.setDoor(new Door());
@@ -15,9 +15,6 @@ public class Main {
         System.out.println(appartment1);
         System.out.println(appartment2);
 
-        oleg.openDoor();
-        oleg.setAppartment(appartment1);
-        oleg.turnOnLight();
 
         System.out.println(appartment1);
         System.out.println(appartment2);

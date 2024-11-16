@@ -4,11 +4,11 @@ public class Window {
 
     private boolean open;
 
-    public void openWindow() {
+    public void open() {
         open = true;
     }
 
-    public void closeWindow() {
+    public void close() {
         open = false;
     }
 

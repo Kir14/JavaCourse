@@ -4,11 +4,11 @@ public class Door {
 
     private boolean open;
 
-    public void openDoor() {
+    public void open() {
         open = true;
     }
 
-    public void closeDoor() {
+    public void close() {
         open = false;
     }
 

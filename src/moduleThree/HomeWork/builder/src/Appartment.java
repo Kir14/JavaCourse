@@ -43,6 +43,42 @@ public class Appartment {
         return light;
     }
 
+    public void turnOnLight() {
+        if (light != null) {
+            light.turnOn();
+        }
+    }
+
+    public void turnOffLight() {
+        if (light != null) {
+            light.turnOn();
+        }
+    }
+
+    public void openDoor() {
+        if (door != null) {
+            door.open();
+        }
+    }
+
+    public void closeDoor() {
+        if (door != null) {
+            door.close();
+        }
+    }
+
+    public void closeWindow() {
+        if (window != null) {
+            window.close();
+        }
+    }
+
+    public void openWindow() {
+        if (window != null) {
+            window.close();
+        }
+    }
+
     @Override
     public String toString() {
         return "\nКвартира № " + number + "\nДверь " + (door.isOpen() ? "открыта" : "закрыта") +
