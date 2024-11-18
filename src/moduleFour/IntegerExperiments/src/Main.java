@@ -1,5 +1,14 @@
 package moduleFour.IntegerExperiments.src;
 
+/*
+1. Запустите код проекта IntegerExperiments. Найдите ошибку, исправьте её заменой Integer на int.
+2. Реализуйте статический метод sumDigits, чтобы он считал сумму цифр в числе и возвращал сумму в результате своей работы. Для реализации метода можете использовать методы:
+•	класса Integer: toString(), parseInt();
+•	класса String: charAt(), length(), valueOf().
+3. Выведите в консоль суммы цифр чисел: 12345, 10, 5059191.
+
+ */
+
 public class Main {
     public static void main(String[] args) {
         Container container = new Container();
@@ -30,6 +39,7 @@ public class Main {
         for (int i = 0; i < strNumber.length(); i++) {
             sum += Character.getNumericValue(strNumber.charAt(i));
         }
+
         return sum;
     }
 }
