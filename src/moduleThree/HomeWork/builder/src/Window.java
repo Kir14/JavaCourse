@@ -13,7 +13,12 @@ public class Window {
     }
 
     public boolean isOpen() {
-        return  open;
+        return open;
+    }
+
+    @Override
+    public String toString() {
+        return "Окно " + (open ? "открыто" : "закрыто");
     }
 
 }

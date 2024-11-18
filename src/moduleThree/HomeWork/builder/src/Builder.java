@@ -1,34 +1,24 @@
 package moduleThree.HomeWork.builder.src;
 
 public class Builder {
+    public static void main(String[] args) {
+        Apartment apartment1 = new Apartment(456);
 
-    private String name;
-    private Appartment appartment;
+        apartment1.setLight(new Light(40));
+        apartment1.setDoor(new Door(TypeMaterial.METAL));
 
+        apartment1.getDoor().open();
 
-    public Builder(String name) {
-        this.name = name;
-    }
+        System.out.println(apartment1);
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        Apartment apartment2 = new Apartment(15);
 
-    public String getName() {
-        return name;
-    }
+        apartment2.setLight(new Light(60));
+        apartment2.setWindow(new Window());
 
-    public void setAppartment(Appartment appartment) {
-        this.appartment = appartment;
-    }
+        apartment2.getLight().turnOn();
 
-    public Appartment getAppartment() {
-        return appartment;
-    }
+        System.out.println(apartment2);
 
-    public Appartment buildApartment(int number) {
-        appartment = new Appartment(number);
-        System.out.println("Хорошая работа " + name);
-        return appartment;
     }
 }
