@@ -3,7 +3,7 @@ package moduleThree.HomeWork.builder.src;
 public class Door {
 
     private boolean open;
-    private final TypeMaterial material;
+    private TypeMaterial material;
 
     public Door(TypeMaterial material) {
         open = false;
@@ -26,21 +26,12 @@ public class Door {
         return material;
     }
 
-    public String getStringMaterial() {
-        switch (material) {
-            case WOODEN:
-                return "деревянная";
-            case METAL:
-                return "металлическая";
-            case PLASTIC:
-                return "пластиковая";
-            default:
-                return "";
-        }
+    public void setMaterial(TypeMaterial material) {
+        this.material = material;
     }
 
     @Override
     public String toString() {
-        return "Дверь " + getStringMaterial() + (open ? " открыта" : " закрыта");
+        return "Дверь " + material + (open ? " открыта" : " закрыта");
     }
 }
