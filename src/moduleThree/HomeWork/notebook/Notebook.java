@@ -1,4 +1,4 @@
-package moduleThree.HomeWork.comp.src;
+package moduleThree.HomeWork.notebook;
 import java.util.Objects;
 
 public class Notebook {
