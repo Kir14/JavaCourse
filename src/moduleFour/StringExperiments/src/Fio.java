@@ -1,5 +1,7 @@
 package moduleFour.StringExperiments.src;
 
+import moduleFour.StringExperiments.src.stringexp.Client;
+
 import java.util.Scanner;
 
 /*
@@ -9,22 +11,7 @@ import java.util.Scanner;
 public class Fio {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String line = scanner.nextLine();
-        line = line.trim();
-        line += " ";
-        int spaceIndex = line.indexOf(' ');
-        if (spaceIndex != -1) {
-            System.out.println("Фамилия: " + line.substring(0, spaceIndex));
-            line = line.substring(spaceIndex + 1);
-        }
-        spaceIndex = line.indexOf(' ', spaceIndex);
-        if (spaceIndex != -1) {
-            System.out.println("Имя: " + line.substring(0, spaceIndex));
-            line = line.substring(spaceIndex + 1);
-        }
-        spaceIndex = line.indexOf(' ', spaceIndex);
-        if (spaceIndex != -1) {
-            System.out.println("Отчество: " + line.substring(0, spaceIndex));
-        }
+        Client client = new Client(scanner.nextLine());
+        System.out.println(client);
     }
 }

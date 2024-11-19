@@ -7,19 +7,20 @@ package moduleFour.StringExperiments.src;
 
 public class Loader {
     public static void main(String[] args) {
-        String text = "Вася заработал 5000 рублей, Петя - 7563 рубля, а Маша - 30000 рублей";
-        int rubIndex = text.indexOf("руб");
-        int sumIndex = text.lastIndexOf(' ', rubIndex - 2);
-        int sumVasia = Integer.parseInt(text.substring(sumIndex + 1, rubIndex - 1));
-        rubIndex = text.indexOf("руб", rubIndex + 3);
-        sumIndex = text.lastIndexOf(' ', rubIndex - 2);
-        int sumPetya = Integer.parseInt(text.substring(sumIndex + 1, rubIndex - 1));
-        rubIndex = text.indexOf("руб", rubIndex + 3);
-        sumIndex = text.lastIndexOf(' ', rubIndex - 2);
-        int sumMasha = Integer.parseInt(text.substring(sumIndex + 1, rubIndex - 1));
+        String text = "Вася заработал 5000,56 рублей, Петя - 7563.12 рубля, а Маша - 30000 рублей";
+        int[] indexesSpace = new int[2];
+        double sumVasia = parseMoney(text, indexesSpace);
+        double sumPetya = parseMoney(text, indexesSpace);
+        double sumMasha = parseMoney(text, indexesSpace);
         System.out.println(sumVasia);
         System.out.println(sumPetya);
         System.out.println(sumMasha);
         System.out.println(sumVasia + sumPetya + sumMasha);
+    }
+
+    public static double parseMoney(String text, int[] indexesSpace) {
+        indexesSpace[0] = text.indexOf("руб", indexesSpace[0] + 3);
+        indexesSpace[1] = text.lastIndexOf(' ', indexesSpace[0] - 2);
+        return Double.parseDouble(text.substring(indexesSpace[1] + 1, indexesSpace[0] - 1).replace(',', '.'));
     }
 }
