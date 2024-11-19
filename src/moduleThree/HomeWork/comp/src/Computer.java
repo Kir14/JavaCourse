@@ -2,13 +2,13 @@ package moduleThree.HomeWork.comp.src;
 
 public class Computer {
 
-    private String processor;
-    private int ram;
-    private String hdd;
+    private Processor processor;
+    private RAM ram;
+    private HDD hdd;
     private int timeToDie;
     private boolean isTurn;
 
-    public Computer(String processor, int ram, String hdd, int timeToDie) {
+    public Computer(Processor processor, RAM ram, HDD hdd, int timeToDie) {
         this.processor = processor;
         this.ram = ram;
         this.hdd = hdd;
@@ -52,9 +52,32 @@ public class Computer {
         isTurn = false;
     }
 
+    public Processor getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(Processor processor) {
+        this.processor = processor;
+    }
+
+    public RAM getRam() {
+        return ram;
+    }
+
+    public void setRam(RAM ram) {
+        this.ram = ram;
+    }
+
+    public HDD getHdd() {
+        return hdd;
+    }
+
+    public void setHdd(HDD hdd) {
+        this.hdd = hdd;
+    }
 
     public String toString() {
-        return ("Комп Песня \n Процессор: " + processor + "\n Оперативки гб: " + ram
-                + "\n HHD от кампании " + hdd + "\n Включений до потухания " + timeToDie);
+        return ("Комп Песня \n" + processor + "\n" + ram
+                + "\n" + hdd + "\n Включений до потухания " + timeToDie);
     }
 }
