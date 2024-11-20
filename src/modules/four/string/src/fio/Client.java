@@ -1,4 +1,4 @@
-package modules.four.experiments.string.src.fio;
+package modules.four.string.src.fio;
 
 
 public class Client {

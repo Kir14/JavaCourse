@@ -1,4 +1,4 @@
-package modules.four.experiments.integer.src;
+package modules.four.integer.src;
 
 public class Container
 {

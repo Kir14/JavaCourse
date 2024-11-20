@@ -1,4 +1,4 @@
-package modules.four.experiments.string.src;
+package modules.four.string.src;
 
 /*
 Напишите код в проекте StringExperiments, который считает сумму заработка всех друзей (Васи, Пети и Маши).

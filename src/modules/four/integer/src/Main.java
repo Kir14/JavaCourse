@@ -1,4 +1,4 @@
-package modules.four.experiments.integer.src;
+package modules.four.integer.src;
 
 /*
 1. Запустите код проекта IntegerExperiments. Найдите ошибку, исправьте её заменой Integer на int.

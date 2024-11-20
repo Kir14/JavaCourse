@@ -1,4 +1,4 @@
-package modules.four.experiments.string.src;
+package modules.four.string.src;
 
 /*
 Распечатайте коды всех букв английского алфавита и сами буквы.
