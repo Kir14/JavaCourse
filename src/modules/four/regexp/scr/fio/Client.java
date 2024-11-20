@@ -1,4 +1,4 @@
-package modules.four.regexp.fio;
+package modules.four.regexp.scr.fio;
 
 public class Client {
 

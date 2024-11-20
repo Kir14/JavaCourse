@@ -1,4 +1,4 @@
-package modules.four.regexp;
+package modules.four.regexp.scr;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

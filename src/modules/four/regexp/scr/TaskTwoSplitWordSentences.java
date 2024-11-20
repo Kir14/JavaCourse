@@ -1,4 +1,4 @@
-package modules.four.regexp;
+package modules.four.regexp.scr;
 
 /*
 Возьмите английский текст (не менее 100 слов) и напишите программу,
