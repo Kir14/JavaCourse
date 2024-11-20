@@ -1,4 +1,4 @@
-package modules.four.experiments.string.src.stringEx;
+package modules.four.experiments.string.src.fio;
 
 import java.util.Scanner;
 
