@@ -21,27 +21,55 @@ public class Phone {
     public void setPhone(String line) {
         line = line.trim();
         line = line.replaceAll("\\D", "");
+        //String
+        if (checkNumberString(line)) {
+            this.phone = line;
+        }
+        //Regex
+        if (checkNumberRegex(line)) {
+            this.phone = line;
+        }
+    }
+
+    public boolean checkNumberString(String line) {
         switch (line.length()) {
             case 11:
                 if (line.charAt(0) == '7') {
                     System.out.println(line);
-                    this.phone = line;
+                    return true;
                 } else if (line.charAt(0) == '8') {
                     line = "7" + line.substring(1);
                     System.out.println(line);
-                    this.phone = line;
+                    return true;
                 } else {
                     System.out.println("Неверный формат номера");
-
+                    return false;
                 }
-                break;
             case 10:
                 line = "7" + line;
                 System.out.println(line);
-                this.phone = line;
-                break;
+                return true;
             default:
                 System.out.println("Неверный формат номера");
+                return false;
+        }
+    }
+
+    public boolean checkNumberRegex(String line) {
+        if (line.matches("7[0-9]{10}")) {
+            System.out.println(line);
+            return true;
+        } else if (line.matches("8[0-9]{10}")) {
+            line = "7" + line.substring(1);
+            System.out.println(line);
+            return true;
+        } else if (line.matches("[0-9]{10}")) {
+            line = "7" + line;
+            System.out.println(line);
+            return true;
+        } else {
+            System.out.println("Неверный формат номера");
+            return false;
         }
     }
 
