@@ -1,4 +1,4 @@
-package modules.four.regexp.experiments.string;
+package modules.four.regexp.fio;
 
 import java.util.Scanner;
 
