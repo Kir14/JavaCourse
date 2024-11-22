@@ -16,7 +16,7 @@ int year = 1990;
 
 public class DayBirthdays {
     public static void main(String[] args) {
-        MyDate date = new MyDate(14, 2, 2000);
+        MyDate date = new MyDate(20, 11, 2000);
         date.outputDays();
 
     }
