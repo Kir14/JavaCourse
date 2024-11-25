@@ -7,7 +7,7 @@ package modules.five.arrays.revers;
 
  */
 
-public class Main {
+public class MainReverse {
     public static void main(String[] args) {
         String line = "Каждый охотник желает знать, где сидит фазан";
         MyArray arr = new MyArray(line);

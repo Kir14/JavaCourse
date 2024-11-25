@@ -1,7 +1,7 @@
 package modules.five.arrays.revers;
 
 public class MyArray {
-    String[] arrStr;
+    private String[] arrStr;
 
     public MyArray(String[] arrStr) {
         this.arrStr = arrStr;
