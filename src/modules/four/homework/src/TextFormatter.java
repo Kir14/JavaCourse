@@ -37,8 +37,11 @@ public class TextFormatter {
     public ArrayList<String[]> getSentences() {
         ArrayList<String[]> sentences = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(pathFile))) {
-            sentences.add(br.readLine().split("[.!?]+\\s"));
-
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim() + " ";
+                sentences.add(line.split("[.!?]+\\s"));
+            }
         } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
@@ -51,9 +54,9 @@ public class TextFormatter {
      есть возвращает true, если нет false
      */
     public static boolean hasPalindrome(String sentence) {
-        String[] words = sentence.split("\\s+");
+        String[] words = sentence.split("[,:]*\\s+");
         for (String word : words) {
-            if (isPalindrome(word)) {
+            if (isPalindrome(word) && (word.length() > 1)) { //Длина установлена для исключения предлогов. ("в", "а" и т.д.)
                 return true;
             }
         }
