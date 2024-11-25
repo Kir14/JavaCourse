@@ -17,7 +17,6 @@ public class TextFormatter {
     только палиндромы
      */
     public void getPalindromes(String pathOutputFile) {
-
         try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
              BufferedWriter bw = new BufferedWriter(new FileWriter(pathOutputFile, false))) {
             String line;
@@ -27,9 +26,7 @@ public class TextFormatter {
                     bw.write(line + "\n");
                 }
             }
-
         } catch (IOException ex) {
-
             System.out.println(ex.getMessage());
         }
     }
@@ -71,9 +68,7 @@ public class TextFormatter {
     }
 
     public static boolean isPalindrome(String word) {
-        StringBuilder sb = new StringBuilder(word);
-        sb.reverse();
-        return word.equals(sb.toString());
+        return word.contentEquals(new StringBuilder(word).reverse());
     }
 
 
