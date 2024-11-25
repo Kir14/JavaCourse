@@ -15,30 +15,12 @@ package modules.five.arrays.ambulance;
 Количество здоровых: 1
 
  */
-
-import java.util.stream.Stream;
-
 public class MainAmbulance {
     public static void main(String[] args) {
-        /*
-        int countPatient = 30;
-        float maxTemperature = 40.0f;
-        float minTemperature = 32.0f;
-        float maxTempGood = 36.9f;
-        float minTempGood = 36.2f;
-        float[] ambulance = new float[countPatient];
-        */
-
         Ambulance ambulance = new Ambulance(30, 40.0f, 32.0f, 36.9f, 36.2f);
         System.out.println(ambulance);
 
         System.out.println(ambulance.avgTempStream() + " = " + ambulance.avgTempFor());
         System.out.println(ambulance.countGoodStream() + " = " + ambulance.countGoodFor());
-
-
     }
-
-
-
-
 }
