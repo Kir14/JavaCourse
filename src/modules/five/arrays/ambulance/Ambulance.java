@@ -49,7 +49,9 @@ public class Ambulance {
     Напишите код, который выводит среднюю температуру
      */
     public double avgTempStream() {
-        return Arrays.stream(ambulance).average().getAsDouble();
+        return Arrays.stream(ambulance)
+                .average()
+                .getAsDouble();
     }
 
     public double avgTempFor() {
@@ -64,7 +66,9 @@ public class Ambulance {
     Количество здоровых:
      */
     public int countGoodStream() {
-        return (int) Arrays.stream(ambulance).filter(w -> w >= minTempGood && w <= maxTempGood).count();
+        return (int) Arrays.stream(ambulance)
+                .filter(w -> w >= minTempGood && w <= maxTempGood)
+                .count();
     }
 
     public int countGoodFor() {
