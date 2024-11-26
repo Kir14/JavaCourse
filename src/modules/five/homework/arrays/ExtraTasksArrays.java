@@ -3,6 +3,7 @@ package modules.five.homework.arrays;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.OptionalInt;
 
 public class ExtraTasksArrays {
