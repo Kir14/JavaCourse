@@ -52,10 +52,13 @@ public class ToDoList {
         return true;
     }
 
-    public void printList() {
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(i + " - " + list.get(i));
+            sb.append(i).append(" - ").append(list.get(i)).append("\n");
         }
+        return sb.toString();
     }
 
 }

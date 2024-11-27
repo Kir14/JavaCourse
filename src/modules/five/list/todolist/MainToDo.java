@@ -24,7 +24,7 @@ public class MainToDo {
             String digit;
             switch (command) {
                 case "LIST":
-                    list.printList();
+                    System.out.print(list);
                     break;
                 case "ADD":
                     secondSpaceIndex = line.indexOf(' ', spaceIndex + 1);
