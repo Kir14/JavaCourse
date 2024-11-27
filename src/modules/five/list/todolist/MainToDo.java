@@ -30,18 +30,18 @@ public class MainToDo {
                     secondSpaceIndex = line.indexOf(' ', spaceIndex + 1);
                     digit = line.substring(spaceIndex + 1, secondSpaceIndex);
                     if (digit.matches("\\d+")) {
-                        if (!list.addItem(line.substring(secondSpaceIndex + 1), Integer.parseInt(digit))) {
+                        if (!list.addItem(line.substring(secondSpaceIndex + 1, line.length() - 1), Integer.parseInt(digit))) {
                             System.out.println("Out of range");
                         }
                     } else {
-                        list.addItem(line.substring(spaceIndex + 1));
+                        list.addItem(line.substring(spaceIndex + 1, line.length() - 1));
                     }
                     break;
                 case "EDIT":
                     secondSpaceIndex = line.indexOf(' ', spaceIndex + 1);
                     digit = line.substring(spaceIndex + 1, secondSpaceIndex);
                     if (digit.matches("\\d+")) {
-                        if (!list.editItem(line.substring(secondSpaceIndex + 1), Integer.parseInt(digit))) {
+                        if (!list.editItem(line.substring(secondSpaceIndex + 1, line.length() - 1), Integer.parseInt(digit))) {
                             System.out.println("Out of range");
                         }
                     } else {
