@@ -13,28 +13,28 @@ import java.util.TreeSet;
  */
 
 public class EmailsSet {
-    private TreeSet<String> setEmails;
+    private TreeSet<String> emails;
 
     public EmailsSet() {
-        setEmails = new TreeSet<>();
+        emails = new TreeSet<>();
     }
 
     public TreeSet<String> getEmails() {
-        return setEmails;
+        return emails;
     }
 
     public boolean addEmail(String email) {
         if (!email.matches("^[A-Za-z](\\.?\\w)*@[A-Za-z]+\\.[A-Za-z]+$")) {
             return false;
         }
-        setEmails.add(email);
+        emails.add(email);
         return true;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (String el : setEmails) {
+        for (String el : emails) {
             sb.append(el).append("\n");
         }
         return sb.toString();
