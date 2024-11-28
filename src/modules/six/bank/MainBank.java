@@ -11,6 +11,15 @@ package modules.six.bank;
 
  */
 
+/*
+Напишите метод в классе BankAccount:
+boolean send(BankAccount receiver, double amount)
+для отправки денег с одного счёта на другой. Метод должен вернуть true, если деньги успешно переведены.
+Примечание
+В методе для аргумента amount используйте тип данных, который применили в классе BankAccount. Тип double дан для примера.
+
+ */
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -33,6 +42,14 @@ public class MainBank {
         System.out.println(ca.getSomeMoney(BigDecimal.valueOf(3_000)));
         System.out.println(ca.getAmount());
         ca.addMoney(BigDecimal.valueOf(3_000));
+        System.out.println(ca.getAmount());
+
+        System.out.println("Before transaction");
+        System.out.println(da.getAmount());
+        System.out.println(ca.getAmount());
+        System.out.println("After");
+        da.send(ca, BigDecimal.valueOf(4_000));
+        System.out.println(da.getAmount());
         System.out.println(ca.getAmount());
     }
 }

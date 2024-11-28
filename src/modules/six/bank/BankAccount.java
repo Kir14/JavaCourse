@@ -28,4 +28,12 @@ public class BankAccount {
     public void addMoney(BigDecimal plusAmount) {
         amount = amount.add(plusAmount);
     }
+
+    public boolean send(BankAccount receiver, BigDecimal amountReceive) {
+        if(getSomeMoney(amountReceive)) {
+            receiver.addMoney(amountReceive);
+            return true;
+        }
+        return false;
+    }
 }
