@@ -24,9 +24,17 @@ public class MainToDo {
             String digit;
             switch (command) {
                 case "LIST":
+                    if (!line.equals("LIST ")) {
+                        System.out.println("LIST doesn't have any arguments");
+                        break;
+                    }
                     System.out.print(list);
                     break;
                 case "ADD":
+                    if (line.equals("ADD ")) {
+                        System.out.println("ADD needs arguments");
+                        break;
+                    }
                     secondSpaceIndex = line.indexOf(' ', spaceIndex + 1);
                     digit = line.substring(spaceIndex + 1, secondSpaceIndex);
                     if (digit.matches("\\d+")) {
@@ -38,6 +46,11 @@ public class MainToDo {
                     }
                     break;
                 case "EDIT":
+                    //TODO написать мэтч на правильность строки
+                    if (!line.matches("")) {
+                        System.out.println("ADD needs arguments");
+                        break;
+                    }
                     secondSpaceIndex = line.indexOf(' ', spaceIndex + 1);
                     digit = line.substring(spaceIndex + 1, secondSpaceIndex);
                     if (digit.matches("\\d+")) {
