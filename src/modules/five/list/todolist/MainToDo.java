@@ -46,9 +46,8 @@ public class MainToDo {
                     }
                     break;
                 case "EDIT":
-                    //TODO написать мэтч на правильность строки
-                    if (!line.matches("")) {
-                        System.out.println("ADD needs arguments");
+                    if (!line.matches("EDIT \\d+ .+")) {
+                        System.out.println("EDIT needs arguments: EDIT index text");
                         break;
                     }
                     secondSpaceIndex = line.indexOf(' ', spaceIndex + 1);
@@ -62,6 +61,10 @@ public class MainToDo {
                     }
                     break;
                 case "DELETE":
+                    if (!line.matches("DELETE \\d+")) {
+                        System.out.println("EDIT needs arguments: DELETE index");
+                        break;
+                    }
                     secondSpaceIndex = line.indexOf(' ', spaceIndex + 1);
                     digit = line.substring(spaceIndex + 1, secondSpaceIndex);
                     if (digit.matches("\\d+")) {
