@@ -3,7 +3,7 @@ package modules.five.map.homework;
 public class BankAccount {
     private String clientName;
     private double balance;
-    private final String currency;
+    private String currency;
 
     public BankAccount(String clientName, String currency) {
         this.clientName = clientName;
@@ -37,6 +37,10 @@ public class BankAccount {
 
     public String getCurrency() {
         return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     @Override

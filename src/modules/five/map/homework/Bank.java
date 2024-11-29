@@ -13,11 +13,15 @@ public class Bank {
      Добавление нового клиента:
    - Напишите метод, который добавляет новый банковский счет для клиента. Если клиент с таким ID уже существует, необходимо обновить его данные.
      */
-    //Не понимаю что значит обновить?...
-    //НОВЫЙ?
     public int addClient(Integer idClient, BankAccount account) {
         if (bank.containsKey(idClient)) {
-            bank.put(idClient, account);
+            BankAccount acc = bank.get(idClient);
+            if (!acc.getClientName().equals(account.getClientName())) {
+                acc.setClientName(account.getClientName());
+            }
+            if (!acc.getCurrency().equals(account.getCurrency())) {
+                acc.setCurrency(account.getCurrency());
+            }
             return -1;
         } else {
             bank.put(idClient, account);
