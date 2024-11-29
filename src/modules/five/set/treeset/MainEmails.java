@@ -20,9 +20,17 @@ public class MainEmails {
             String[] line = scanner.nextLine().split("\\s");
             switch (line[0]) {
                 case "LIST":
+                    if (line.length > 1) {
+                        System.out.println("LIST doesn't have any arguments");
+                        break;
+                    }
                     System.out.print(emails);
                     break;
                 case "ADD":
+                    if (line.length != 2) {
+                        System.out.println("ADD needs only email: ADD email");
+                        break;
+                    }
                     if (!emails.addEmail(line[1])) {
                         System.out.println("Wrong format");
                     }
