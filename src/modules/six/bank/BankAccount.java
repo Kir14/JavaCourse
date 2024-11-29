@@ -3,7 +3,7 @@ package modules.six.bank;
 import java.math.BigDecimal;
 
 public class BankAccount {
-    protected BigDecimal amount;
+    private BigDecimal amount;
 
     public BankAccount() {
         amount = BigDecimal.valueOf(0.0);
