@@ -10,6 +10,8 @@ package modules.five.map;
 
  */
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class PhoneBook {
@@ -49,6 +51,12 @@ public class PhoneBook {
                 return name;
             }
         }
+        //Map entry
+        /*Map<Integer, String> test = new HashMap<>();
+        for(Map.Entry<String, String> entry : phonebook.entrySet()){
+            entry.getKey()
+        }*/
+
         return "";
     }
 

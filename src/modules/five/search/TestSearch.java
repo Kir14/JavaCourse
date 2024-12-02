@@ -30,7 +30,7 @@ import java.util.*;
 
 public class TestSearch {
     public static void main(String[] args) {
-        int count = 2_000_000;
+        int count = 10;
         ArrayList<String> numbersList = new ArrayList<>(count);
         createNumber(numbersList, count);
         HashSet<String> numbersSet = new HashSet<>(numbersList);
