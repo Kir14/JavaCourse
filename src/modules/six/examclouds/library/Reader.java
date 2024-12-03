@@ -84,7 +84,7 @@ public class Reader {
         for (String book : books) {
             sb.append(" ").append(book).append(",");
         }
-        return sb.deleteCharAt(sb.length()-1).toString();
+        return sb.deleteCharAt(sb.length() - 1).toString();
     }
 
     public String takeBook(Book... books) {
@@ -93,7 +93,7 @@ public class Reader {
         for (Book book : books) {
             sb.append(" ").append(book.getBookName()).append(",");
         }
-        return sb.deleteCharAt(sb.length()-1).toString();
+        return sb.deleteCharAt(sb.length() - 1).toString();
     }
 
     public String returnBook(int n) {
@@ -112,7 +112,7 @@ public class Reader {
         for (String book : books) {
             sb.append(" ").append(book).append(",");
         }
-        return sb.deleteCharAt(sb.length()-1).toString();
+        return sb.deleteCharAt(sb.length() - 1).toString();
     }
 
     public String returnBook(Book... books) {
@@ -121,7 +121,7 @@ public class Reader {
         for (Book book : books) {
             sb.append(" ").append(book.getBookName()).append(",");
         }
-        return sb.deleteCharAt(sb.length()-1).toString();
+        return sb.deleteCharAt(sb.length() - 1).toString();
     }
 
 }
