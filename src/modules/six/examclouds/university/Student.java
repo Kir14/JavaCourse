@@ -70,7 +70,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return lastName + " " +firstName + " " + group + " avg mark: " + averageMark;
+        return firstName + " " + lastName + " " + group + " avg mark: " + averageMark;
     }
 
 }
