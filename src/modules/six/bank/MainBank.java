@@ -56,5 +56,10 @@ public class MainBank {
         da.send(ca, BigDecimal.valueOf(4_000));
         System.out.println(da.getAmount());
         System.out.println(ca.getAmount());
+
+        CardAccount card = new CardAccount(BigDecimal.valueOf(10), BigDecimal.valueOf(1_000));
+        System.out.println(card.getAmount());
+        System.out.println(card.getSomeMoney(BigDecimal.valueOf(1_000)));
+        System.out.println(card.getAmount());
     }
 }
