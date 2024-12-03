@@ -20,8 +20,10 @@ public class MainClient {
     public static void main(String[] args) {
         FizClient fizClient = new FizClient(BigDecimal.valueOf(1_000));
         System.out.println(fizClient);
+        System.out.println("Накинули 3_000");
         fizClient.addMoney(BigDecimal.valueOf(3_000));
         System.out.println(fizClient);
+        System.out.println("Сняли 4_000");
         fizClient.getSomeMoney(BigDecimal.valueOf(4_000));
         System.out.println(fizClient);
 
@@ -66,6 +68,7 @@ public class MainClient {
     public static void output(List<Client> list) {
         for (Client cl : list) {
             System.out.println(cl);
+            System.out.println();
         }
     }
 }
