@@ -8,11 +8,11 @@ package modules.six.examclouds.recursion;
 
 public class Recursion {
     public static void main(String[] args) {
-        System.out.println(recAsc(2, 14));
-        System.out.println(recAsc(45, 34));
+        System.out.println(numbBetween(2, 14));
+        System.out.println(numbBetween(45, 34));
     }
 
-    public static String recAsc(int a, int b) {
+    public static String numbBetween(int a, int b) {
         if (a < b - 1) {
             return ++a + "  " + recAsc(a, b);
         }
