@@ -15,5 +15,10 @@ public class MainCar {
         System.out.println(ferrari);
         System.out.println();
         System.out.println(truck);
+
+        ferrari.start();
+        ferrari.turnLeft();
+        ferrari.turnRight();
+        ferrari.stop();
     }
 }
