@@ -68,7 +68,6 @@ public class Reader {
         this.phone = phone;
     }
 
-    //TODO takeBook(), returnBook()
     public String takeBook(int n) {
         String str = fullName + " взял " + n + " книг";
         if ((n % 10 == 1) && (n % 100 != 11)) {
