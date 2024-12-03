@@ -14,10 +14,10 @@ public class Recursion {
 
     public static String numbBetween(int a, int b) {
         if (a < b - 1) {
-            return ++a + "  " + recAsc(a, b);
+            return ++a + "  " + numbBetween(a, b);
         }
         if (b < a - 1) {
-            return --a + "  " + recAsc(a, b);
+            return --a + "  " + numbBetween(a, b);
         }
         return "";
     }
