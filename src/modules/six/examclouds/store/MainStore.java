@@ -12,6 +12,7 @@ public class MainStore {
         Product fridge = new Product("Fridge", 456.2, 4.4);
         Product kettle = new Product("Kettle", 89.9, 4.8);
 
+        //Ты говоришь?
         Category fruits = new Category("Fruits");
         fruits.addProduct(apple);
         fruits.addProduct(grape);

@@ -8,6 +8,9 @@ public class MainPerson {
 
         Person oleg = new Person("Oleg", 23);
 
+        oleg.move();
+        ivan.talk("Hello");
+
         System.out.println(ivan);
         System.out.println(oleg);
     }

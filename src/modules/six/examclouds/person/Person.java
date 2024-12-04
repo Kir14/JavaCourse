@@ -39,11 +39,11 @@ public class Person {
     }
 
     public void move() {
-        System.out.println("Move");
+        System.out.println("Такой-то  " + fullName + " говорит");
     }
 
     public void talk(String something) {
-        System.out.println("Speak :" + something);
+        System.out.println("Такой-то  " + fullName + " говорит: " + something);
     }
 
     @Override
