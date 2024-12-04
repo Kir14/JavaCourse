@@ -2,13 +2,14 @@ package modules.six.examclouds.store;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Store {
 
-    HashMap<TypeCategory, ArrayList<Product>> store;
+    ArrayList<User> users;
+    private HashMap<TypeCategory, ArrayList<Product>> store;
 
     public Store() {
+        users = new ArrayList<>();
         store = new HashMap<>();
     }
 
@@ -21,11 +22,23 @@ public class Store {
         }
     }
 
+    public String getUsersString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Users:\n");
+        for (User user : users) {
+            sb.append(user).append("\n");
+        }
+        return sb.toString();
+    }
+
     public HashMap<TypeCategory, ArrayList<Product>> getAllProducts() {
         return store;
     }
 
-    public String getCategoryProducts(TypeCategory category) {
+    public String getCategoryProductsString(TypeCategory category) {
+        if (!store.containsKey(category)) {
+            return "Not have any products";
+        }
         StringBuilder sb = new StringBuilder();
         sb.append(category).append(":\n");
         for (Product p : store.get(category)) {
@@ -37,12 +50,10 @@ public class Store {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<TypeCategory, ArrayList<Product>> entry : store.entrySet()) {
-            sb.append(entry.getKey()).append(":\n");
-            for (Product p : entry.getValue()) {
-                sb.append("  ").append(p).append("\n");
-            }
+        for (TypeCategory category : store.keySet()) {
+            sb.append(getCategoryProductsString(category));
         }
+        sb.append(getUsersString());
         return sb.toString();
     }
 

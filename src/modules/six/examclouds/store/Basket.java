@@ -14,7 +14,7 @@ public class Basket {
         StringBuilder sb = new StringBuilder();
         sb.append("Purchased products:\n");
         for (Product p : products) {
-            sb.append(p).append("\n");
+            sb.append("   ").append(p).append("\n");
         }
         return sb.deleteCharAt(sb.length() - 1).toString();
     }

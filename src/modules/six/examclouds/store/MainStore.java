@@ -18,27 +18,32 @@ public class MainStore {
         store.addProducts(TypeCategory.FRUIT, grape, pear, goldApple);
         store.addProducts(TypeCategory.TECH, toaster, blender, fridge, kettle);
 
+        User oleg = new User("oleg", "111");
+        User kir = new User("kir", "111");
+
+        store.users.add(oleg);
+        store.users.add(kir);
+
         System.out.println("--------Print Store----------");
         System.out.println(store);
 
         System.out.println("--------Print Fruits----------");
-        System.out.println(store.getCategoryProducts(TypeCategory.FRUIT));
+        System.out.println(store.getCategoryProductsString(TypeCategory.FRUIT));
 
+        System.out.println("--------Print Users----------");
+        System.out.println(store.getUsersString());
 
-        System.out.println();
-        User oleg = new User("oleg", "111");
         oleg.buyProduct(apple);
         oleg.buyProduct(pear);
         oleg.buyProduct(fridge);
-        System.out.println(oleg);
 
-        System.out.println();
-        User kir = new User("kir", "111");
         kir.buyProduct(grape);
         kir.buyProduct(goldApple);
         kir.buyProduct(toaster);
         kir.buyProduct(kettle);
         kir.declineProduct(toaster);
-        System.out.println(kir);
+
+        System.out.println("--------Print Store----------");
+        System.out.println(store);
     }
 }
