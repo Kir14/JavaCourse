@@ -12,21 +12,18 @@ public class MainStore {
         Product fridge = new Product("Fridge", 456.2, 4.4);
         Product kettle = new Product("Kettle", 89.9, 4.8);
 
-        //Ты говоришь?
-        Category fruits = new Category("Fruits");
-        fruits.addProduct(apple);
-        fruits.addProduct(grape);
-        fruits.addProduct(pear);
-        fruits.addProduct(goldApple);
-        Category technic = new Category("Technic");
-        technic.addProduct(toaster);
-        technic.addProduct(blender);
-        technic.addProduct(fridge);
-        technic.addProduct(kettle);
+        Store store = new Store();
 
-        System.out.println("----------Categories-----------");
-        System.out.println(fruits);
-        System.out.println(technic);
+        store.addProducts(TypeCategory.FRUIT, apple);
+        store.addProducts(TypeCategory.FRUIT, grape, pear, goldApple);
+        store.addProducts(TypeCategory.TECH, toaster, blender, fridge, kettle);
+
+        System.out.println("--------Print Store----------");
+        System.out.println(store);
+
+        System.out.println("--------Print Fruits----------");
+        System.out.println(store.getCategoryProducts(TypeCategory.FRUIT));
+
 
         System.out.println();
         User oleg = new User("oleg", "111");
