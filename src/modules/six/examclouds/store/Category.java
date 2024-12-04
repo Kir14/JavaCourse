@@ -46,6 +46,6 @@ public class Category {
         for (Product p : products) {
             sb.append(p).append("\n");
         }
-        return sb.deleteCharAt(sb.length()-1).toString();
+        return sb.deleteCharAt(sb.length() - 1).toString();
     }
 }
