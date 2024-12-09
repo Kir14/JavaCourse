@@ -20,6 +20,27 @@ public class MainCompany {
         System.out.println();
         System.out.println(" Lowest 6 salaries");
         outputAll(company.getLowestSalaryStaff(6));
+
+
+        System.out.println("-----------FIRE--------------");
+        for (int i = 0; i < company.employees.size(); i++) {
+            company.fire(company.employees.get((int) (Math.random() * company.employees.size())));
+        }
+        System.out.println(company);
+        outputAll(company.employees);
+
+        System.out.println();
+        System.out.println(" Top 5 salaries");
+        outputAll(company.getTopSalaryStaff(5));
+
+        System.out.println();
+        System.out.println(" Lowest 6 salaries");
+        outputAll(company.getLowestSalaryStaff(6));
+
+        System.out.println();
+        System.out.println(" Lowest 8 salaries");
+        outputAll(company.getLowestSalaryStaff(8));
+
     }
 
     public static void generateOperators(Company company, int count) {
@@ -36,11 +57,13 @@ public class MainCompany {
 
     public static void generateTopManagers(Company company, int count) {
         for (int i = 0; i < count; i++) {
-             company.hire(new TopManager("Name", (int) (Math.random() * 11) + 40));
+            company.hire(new TopManager("Name", (int) (Math.random() * 11) + 40));
         }
     }
 
     public static void outputAll(List<Employee> people) {
+        if (people == null)
+            return;
         for (Employee p : people) {
             System.out.println(p);
         }

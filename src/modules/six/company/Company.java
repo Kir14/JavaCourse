@@ -71,7 +71,7 @@ public class Company {
         }
     }
 
-    public void fire(Person person) {
+    public void fire(Employee person) {
 
         if (person instanceof Operator) {
             employees.remove((Operator) person);
@@ -80,8 +80,8 @@ public class Company {
         } else if (person instanceof TopManager) {
             employees.remove((TopManager) person);
         }
-        person.setCompany(null);
-        person.setSalaryFix(0);
+        ((Person) person).setCompany(null);
+        ((Person) person).setSalaryFix(0);
     }
 
     /*
@@ -91,13 +91,19 @@ public class Company {
      */
 
     List<Employee> getLowestSalaryStaff(int count) {
+        if (count < 1 || count > employees.size()) {
+            return null;
+        }
         employees.sort(Comparator.comparingDouble(Employee::getMonthSalary));
-        return employees.subList(0, count-1);
+        return employees.subList(0, count - 1);
     }
 
     List<Employee> getTopSalaryStaff(int count) {
+        if (count < 1 || count > employees.size()) {
+            return null;
+        }
         employees.sort((o1, o2) -> ((Double) o2.getMonthSalary()).compareTo(o1.getMonthSalary()));
-        return employees.subList(0, count-1);
+        return employees.subList(0, count - 1);
     }
 
     @Override
