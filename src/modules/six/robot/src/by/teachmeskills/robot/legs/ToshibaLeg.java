@@ -12,7 +12,7 @@ public class ToshibaLeg implements ILeg {
 
     @Override
     public void step() {
-        System.out.println("Нога Samsung делает шаг");
+        System.out.println("Нога Toshiba делает шаг");
     }
 
     @Override
