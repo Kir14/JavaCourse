@@ -2,9 +2,8 @@ package modules.six.company.employee;
 
 import modules.six.company.Company;
 
-public class Person {
+public abstract class Person {
 
-    //TODO fullName is difficult to generate. Delete it
     private String fullName;
     private int age;
     private double salaryFix;
@@ -15,12 +14,6 @@ public class Person {
         this.age = age;
         salaryFix = 0;
         company = null;
-    }
-
-    public Person(String fullName, int age, double salary, Company company) {
-        this(fullName, age);
-        this.salaryFix = salary;
-        this.company = company;
     }
 
     public String getFullName() {
@@ -55,6 +48,8 @@ public class Person {
         this.age = age;
     }
 
-    //TODO write toString()
-
+    @Override
+    public String toString() {
+        return fullName + " " + age + " лет" + (company != null ? ", работает в компании " + company.getCompanyName() : "");
+    }
 }

@@ -12,15 +12,18 @@ package modules.six.company;
 •	List<Employee> getLowestSalaryStaff(int count).
  */
 
-import modules.six.company.employee.Person;
+import modules.six.company.employee.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
 
 public class Company {
 
     private String companyName;
     private double income;
-    public ArrayList<Person> employees;
+    public ArrayList<Employee> employees;
 
     public Company(String companyName, double income) {
         this.companyName = companyName;
@@ -45,9 +48,21 @@ public class Company {
     }
 
     public void hire(Person person) {
-        employees.add(person);
+
         person.setCompany(this);
-        person.setSalaryFix((int) (Math.random() * 61) + 60);
+
+        if (person instanceof Operator) {
+            employees.add((Operator) person);
+            person.setSalaryFix((int) (Math.random() * 60_000) + 60_000);
+        } else if (person instanceof Manager) {
+            employees.add((Manager) person);
+            ((Manager) person).setInterest(5);
+            person.setSalaryFix((int) (Math.random() * 60_000) + 100_000);
+        } else if (person instanceof TopManager) {
+            employees.add((TopManager) person);
+            ((TopManager) person).setBonus(150);
+            person.setSalaryFix((int) (Math.random() * 60_000) + 130_000);
+        }
     }
 
     public void hireAll(ArrayList<Person> persons) {
@@ -56,10 +71,39 @@ public class Company {
         }
     }
 
-    public void fire(Person p) {
-        employees.remove(p);
-        p.setCompany(null);
-        p.setSalaryFix(0);
+    public void fire(Person person) {
+
+        if (person instanceof Operator) {
+            employees.remove((Operator) person);
+        } else if (person instanceof Manager) {
+            employees.remove((Manager) person);
+        } else if (person instanceof TopManager) {
+            employees.remove((TopManager) person);
+        }
+        person.setCompany(null);
+        person.setSalaryFix(0);
+    }
+
+    /*
+    Создайте два метода, возвращающие список указанной длины (count). Они должны содержать сотрудников, отсортированных по убыванию и возрастанию заработной платы:
+    List<Employee> getTopSalaryStaff(int count),
+•	List<Employee> getLowestSalaryStaff(int count)
+     */
+
+    List<Employee> getLowestSalaryStaff(int count) {
+        employees.sort(Comparator.comparingDouble(Employee::getMonthSalary));
+        return employees.subList(0, count-1);
+    }
+
+    List<Employee> getTopSalaryStaff(int count) {
+        employees.sort((o1, o2) -> ((Double) o2.getMonthSalary()).compareTo(o1.getMonthSalary()));
+        return employees.subList(0, count-1);
+    }
+
+    @Override
+    public String toString() {
+        return "Компания " + companyName + ", количество сотрудников " + employees.size()
+                + ", доход компании " + String.format(Locale.FRANCE, "%,.2f", income);
     }
 
 

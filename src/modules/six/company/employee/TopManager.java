@@ -5,8 +5,6 @@ package modules.six.company.employee;
 и бонуса в виде 150% от заработной платы, если доход компании более 10 млн рублей.
  */
 
-import modules.six.company.Company;
-
 public class TopManager extends Person implements Employee {
 
     private int bonus;
@@ -14,11 +12,6 @@ public class TopManager extends Person implements Employee {
     public TopManager(String fullName, int age) {
         super(fullName, age);
         bonus = 0;
-    }
-
-    public TopManager(String fullName, int age, double salary, Company company) {
-        super(fullName, age, salary, company);
-        bonus = 150;
     }
 
     public int getBonus() {
@@ -33,5 +26,10 @@ public class TopManager extends Person implements Employee {
     public double getMonthSalary() {
         double maxIncome = 10_000_000;
         return super.getSalaryFix() + super.getSalaryFix() * (super.getCompany().getIncome() > maxIncome ? bonus : 0) / 100.0;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", ТопМенеджер с зарплатой " + getMonthSalary();
     }
 }
