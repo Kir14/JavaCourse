@@ -1,18 +1,18 @@
 package modules.six.robot.src.by.teachmeskills.robot.heads;
 
-public class SonyHead implements IHead {
+public class SamsungHead implements IHead {
     private int price;
 
-    public SonyHead(int price) {
+    public SamsungHead(int price) {
         this.price = price;
     }
 
-    public SonyHead() {
+    public SamsungHead() {
     }
 
     @Override
     public void speak() {
-        System.out.println("Говорит голова Sony");
+        System.out.println("Говорит голова Samsung");
     }
 
     @Override

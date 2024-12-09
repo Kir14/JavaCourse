@@ -43,7 +43,7 @@ public class Robot implements IRobot {
 
     @Override
     public void action() {
-        head.speek();
+        head.speak();
         hand.upHand();
         leg.step();
     }
