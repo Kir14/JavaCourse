@@ -1,6 +1,6 @@
 package modules.six.cosmodrome.shuttles;
 
-public class SpaceX implements IStart{
+public class SpaceX implements IStart {
 
     @Override
     public boolean checkSystems() {

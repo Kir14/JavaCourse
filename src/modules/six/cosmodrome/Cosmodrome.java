@@ -22,7 +22,7 @@ public class Cosmodrome {
             return;
         }
         shuttle.startEngine();
-        for(int i = 10; i > 0; i--)
+        for (int i = 10; i > 0; i--)
             System.out.println(i);
         shuttle.launch();
     }
