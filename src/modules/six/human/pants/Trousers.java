@@ -1,6 +1,6 @@
 package modules.six.human.pants;
 
-public class Trousers implements IPants{
+public class Trousers implements IPants {
     private int size;
 
     public Trousers(int size) {

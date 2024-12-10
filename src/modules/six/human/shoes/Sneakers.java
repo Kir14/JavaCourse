@@ -1,6 +1,6 @@
 package modules.six.human.shoes;
 
-public class Sneakers implements IShoes{
+public class Sneakers implements IShoes {
     private int size;
 
     public Sneakers(int size) {
