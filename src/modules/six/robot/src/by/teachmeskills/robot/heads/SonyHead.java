@@ -19,4 +19,9 @@ public class SonyHead implements IHead {
     public int getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Голова Sony " + getPrice();
+    }
 }

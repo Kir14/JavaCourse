@@ -20,4 +20,9 @@ public class SonyLeg implements ILeg {
     public int getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Нога Sony " + getPrice();
+    }
 }

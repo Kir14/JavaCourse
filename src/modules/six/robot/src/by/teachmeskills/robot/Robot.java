@@ -4,7 +4,7 @@ import modules.six.robot.src.by.teachmeskills.robot.hands.IHand;
 import modules.six.robot.src.by.teachmeskills.robot.heads.IHead;
 import modules.six.robot.src.by.teachmeskills.robot.legs.ILeg;
 
-public class Robot implements IRobot {
+public class Robot implements IRobot, Comparable<Robot> {
     private IHead head;
     private IHand hand;
     private ILeg leg;
@@ -15,7 +15,8 @@ public class Robot implements IRobot {
         this.leg = leg;
     }
 
-    public Robot(){}
+    public Robot() {
+    }
 
     public IHead getHead() {
         return head;
@@ -50,6 +51,7 @@ public class Robot implements IRobot {
 
     /**
      * Get the cost of a robot
+     *
      * @return int
      */
     @Override
@@ -58,6 +60,23 @@ public class Robot implements IRobot {
         return price;
     }
 
+    @Override
+    public int compareTo(Robot r) {
+        if (getPrice() == r.getPrice()) {
+            return 0;
+        } else if (getPrice() > r.getPrice()) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
 
+    @Override
+    public String toString() {
+        return "Робот стоимостью " + getPrice()
+                + "\n    " + head
+                + "\n    " + hand
+                + "\n    " + leg;
+    }
 
 }

@@ -19,4 +19,9 @@ public class SonyHand implements IHand {
     public int getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Рука Sony " + getPrice();
+    }
 }

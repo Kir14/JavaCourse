@@ -19,4 +19,9 @@ public class ToshibaLeg implements ILeg {
     public int getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "Нога Toshiba " + getPrice();
+    }
 }

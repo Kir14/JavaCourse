@@ -10,6 +10,9 @@ import modules.six.robot.src.by.teachmeskills.robot.legs.SamsungLeg;
 import modules.six.robot.src.by.teachmeskills.robot.legs.SonyLeg;
 import modules.six.robot.src.by.teachmeskills.robot.legs.ToshibaLeg;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Run {
     public static void main(String[] args) {
         /*
@@ -32,6 +35,13 @@ public class Run {
         System.out.println("---robot 3-----");
         robot3.action();
 
+        ArrayList<Robot> arr = new ArrayList<>();
+        arr.add(robot1);
+        arr.add(robot2);
+        arr.add(robot3);
+
+        Collections.sort(arr);
+        System.out.println(arr.get(arr.size() - 1));
 
     }
 }
