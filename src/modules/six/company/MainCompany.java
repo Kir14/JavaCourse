@@ -45,19 +45,19 @@ public class MainCompany {
 
     public static void generateOperators(Company company, int count) {
         for (int i = 0; i < count; i++) {
-            company.hire(new Operator("Name", (int) (Math.random() * 11) + 20));
+            company.hire(new Operator((int) (Math.random() * 11) + 20));
         }
     }
 
     public static void generateManagers(Company company, int count) {
         for (int i = 0; i < count; i++) {
-            company.hire(new Manager("Name", (int) (Math.random() * 11) + 30));
+            company.hire(new Manager((int) (Math.random() * 11) + 30));
         }
     }
 
     public static void generateTopManagers(Company company, int count) {
         for (int i = 0; i < count; i++) {
-            company.hire(new TopManager("Name", (int) (Math.random() * 11) + 40));
+            company.hire(new TopManager((int) (Math.random() * 11) + 40));
         }
     }
 

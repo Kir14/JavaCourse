@@ -1,9 +1,40 @@
 package modules.six.company.employee;
 
-public class Operator extends Person implements Employee {
+import modules.six.company.Company;
 
-    public Operator(String fullName, int age) {
-        super(fullName, age);
+public class Operator implements Employee {
+
+    private int age;
+    private double salaryFix;
+    private Company company;
+
+    public Operator(int age) {
+        this.age = age;
+        salaryFix = (int) (Math.random() * 60_000) + 60_000;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getSalaryFix() {
+        return salaryFix;
+    }
+
+    public void setSalaryFix(double salaryFix) {
+        this.salaryFix = salaryFix;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
@@ -13,6 +44,6 @@ public class Operator extends Person implements Employee {
 
     @Override
     public String toString() {
-        return super.toString() + ", Оператор с зарплатой " + getMonthSalary();
+        return "Оператор " + age + " лет, с зарплатой " + getMonthSalary();
     }
 }

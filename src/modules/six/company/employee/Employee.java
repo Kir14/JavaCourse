@@ -12,8 +12,11 @@ package modules.six.company.employee;
 
  */
 
+import modules.six.company.Company;
+
 public interface Employee {
 
     double getMonthSalary();
 
+    void setCompany(Company company);
 }

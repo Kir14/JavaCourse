@@ -5,13 +5,45 @@ package modules.six.company.employee;
 и бонуса в виде 150% от заработной платы, если доход компании более 10 млн рублей.
  */
 
-public class TopManager extends Person implements Employee {
+import modules.six.company.Company;
 
+public class TopManager implements Employee {
+
+    private int age;
+    private double salaryFix;
+    private Company company;
     private int bonus;
 
-    public TopManager(String fullName, int age) {
-        super(fullName, age);
-        bonus = 0;
+    final double MAX_INCOME = 10_000_000;
+
+    public TopManager(int age) {
+        this.age = age;
+        bonus = 150;
+        salaryFix = (int) (Math.random() * 60_000) + 130_000;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getSalaryFix() {
+        return salaryFix;
+    }
+
+    public void setSalaryFix(double salaryFix) {
+        this.salaryFix = salaryFix;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public int getBonus() {
@@ -24,12 +56,11 @@ public class TopManager extends Person implements Employee {
 
     @Override
     public double getMonthSalary() {
-        double maxIncome = 10_000_000;
-        return super.getSalaryFix() + super.getSalaryFix() * (super.getCompany().getIncome() > maxIncome ? bonus : 0) / 100.0;
+        return getSalaryFix() + getSalaryFix() * (company.getIncome() > MAX_INCOME ? bonus : 0) / 100.0;
     }
 
     @Override
     public String toString() {
-        return super.toString() + ", ТопМенеджер с зарплатой " + getMonthSalary();
+        return "ТопМенеджер " + age + " лет, с зарплатой " + getMonthSalary();
     }
 }

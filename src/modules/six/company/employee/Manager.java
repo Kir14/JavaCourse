@@ -5,13 +5,43 @@ package modules.six.company.employee;
  Количество заработанных денег для компании генерируйте случайным образом от 115 000 до 140 000 рублей.
  */
 
-public class Manager extends Person implements Employee {
+import modules.six.company.Company;
 
+public class Manager implements Employee {
+
+    private int age;
+    private double salaryFix;
+    private Company company;
     private int interest;
 
-    public Manager(String fullName, int age) {
-        super(fullName, age);
-        interest = 0;
+    public Manager(int age) {
+        this.age = age;
+        interest = 5;
+        salaryFix = (int) (Math.random() * 60_000) + 100_000;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getSalaryFix() {
+        return salaryFix;
+    }
+
+    public void setSalaryFix(double salaryFix) {
+        this.salaryFix = salaryFix;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public int getInterest() {
@@ -24,7 +54,7 @@ public class Manager extends Person implements Employee {
 
     @Override
     public double getMonthSalary() {
-        return super.getSalaryFix() + interest / 100.0 * generateEarnedMoney();
+        return getSalaryFix() + interest / 100.0 * generateEarnedMoney();
     }
 
     private double generateEarnedMoney() {
@@ -35,6 +65,6 @@ public class Manager extends Person implements Employee {
 
     @Override
     public String toString() {
-        return super.toString() + ", Менеджер с зарплатой " + getMonthSalary();
+        return "Менеджер " + age + " лет, с зарплатой " + getMonthSalary();
     }
 }

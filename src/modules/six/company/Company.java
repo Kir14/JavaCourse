@@ -47,41 +47,20 @@ public class Company {
         this.income = income;
     }
 
-    public void hire(Person person) {
-
+    public void hire(Employee person) {
         person.setCompany(this);
-
-        if (person instanceof Operator) {
-            employees.add((Operator) person);
-            person.setSalaryFix((int) (Math.random() * 60_000) + 60_000);
-        } else if (person instanceof Manager) {
-            employees.add((Manager) person);
-            ((Manager) person).setInterest(5);
-            person.setSalaryFix((int) (Math.random() * 60_000) + 100_000);
-        } else if (person instanceof TopManager) {
-            employees.add((TopManager) person);
-            ((TopManager) person).setBonus(150);
-            person.setSalaryFix((int) (Math.random() * 60_000) + 130_000);
-        }
+        employees.add(person);
     }
 
-    public void hireAll(ArrayList<Person> persons) {
-        for (Person person : persons) {
+    public void hireAll(ArrayList<Employee> persons) {
+        for (Employee person : persons) {
             hire(person);
         }
     }
 
     public void fire(Employee person) {
-
-        if (person instanceof Operator) {
-            employees.remove((Operator) person);
-        } else if (person instanceof Manager) {
-            employees.remove((Manager) person);
-        } else if (person instanceof TopManager) {
-            employees.remove((TopManager) person);
-        }
-        ((Person) person).setCompany(null);
-        ((Person) person).setSalaryFix(0);
+        employees.remove(person);
+        person.setCompany(null);
     }
 
     /*
