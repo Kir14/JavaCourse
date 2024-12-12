@@ -4,6 +4,11 @@ package modules.seven.lambda.src;
 Сделайте сортировку сотрудников одновременно по заработной плате и алфавиту.
  */
 
+
+/*
+Выведите в консоль с помощью Stream API сотрудника с максимальной зарплатой среди тех, кто пришёл в 2017 году.
+ */
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -26,6 +31,18 @@ public class Main {
             return comp;
         });
         staff.forEach(System.out::println);
+
+        int year = 2017;
+        System.out.println("Сотрудник с максимальной зарплатой среди тех, кто пришёл в " + year + " году");
+        staff.stream()
+                .filter(e -> {
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(e.getWorkStart());
+                    return (calendar.get(Calendar.YEAR) == year);
+                })
+                .max(Comparator.comparing(Employee::getSalary))
+                .ifPresent(System.out::println);
+
 
     }
 
