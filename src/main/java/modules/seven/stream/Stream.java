@@ -91,9 +91,7 @@ public class Stream {
                         return "18+";
                     }
                 }));
-        groups.forEach((k, v) -> {
-            v.forEach(p -> System.out.println(k + "   " + p));
-        });
+        groups.forEach((k, v) -> v.forEach(p -> System.out.println(k + "   " + p)));
 
 
         /*
@@ -247,7 +245,7 @@ public class Stream {
            - Объединить все имена в одну строку, разделяя их запятыми и добавляя квадратные скобки в начале и конце.
            - Например, результат должен быть "[Alice, Bob, Charlie, Dave]".
          */
-        System.out.println(names.stream()
+        System.out.println(names8.stream()
                 .collect(Collectors.joining(", ","[", "]"))
         );
 
