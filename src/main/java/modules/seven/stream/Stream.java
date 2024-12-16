@@ -245,8 +245,9 @@ public class Stream {
            - Объединить все имена в одну строку, разделяя их запятыми и добавляя квадратные скобки в начале и конце.
            - Например, результат должен быть "[Alice, Bob, Charlie, Dave]".
          */
-        System.out.println(names8.stream()
-                .collect(Collectors.joining(", ","[", "]"))
+        System.out.println("\n" + names8.stream()
+                .peek(s -> System.out.print(s + "   "))
+                .collect(Collectors.joining(", ", "[", "]"))
         );
 
 
