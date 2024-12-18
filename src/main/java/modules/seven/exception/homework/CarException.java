@@ -3,7 +3,7 @@ package modules.seven.exception.homework;
 public class CarException extends Exception {
     private String message;
 
-    CarException(String message) {
+    public CarException(String message) {
         this.message = message;
     }
 
