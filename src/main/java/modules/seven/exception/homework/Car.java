@@ -1,4 +1,4 @@
-package modules.seven.homework;
+package modules.seven.exception.homework;
 
 /*
 - Создать класс Car c полями (марка, скорость, цена), конструкторы (с
