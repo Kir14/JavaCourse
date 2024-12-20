@@ -1,0 +1,32 @@
+<configuration status="WARN">
+    <appenders>
+        <File name="InputErrors" fileName="src/main/java/modules/seven/testing/metro/logs/input_errors.log" append="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+
+        <!-- File Appender for Search logs -->
+        <File name="Search" fileName="src/main/java/modules/seven/testing/metro/logs/search.log" append="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <!-- Additional filter to exclude ERROR logs -->
+            <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="ACCEPT"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+
+        <File name="Exception" fileName="src/main/java/modules/seven/testing/metro/logs/exception.log" append="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+    </appenders>
+    <loggers>
+        <Root level="ALL">
+            <AppenderRef ref="InputErrors"/>
+            <AppenderRef ref="Search"/>
+        </Root>
+
+        <!-- Logger for error logs only -->
+        <Logger name="Exception" level="ERROR" additivity="false">
+            <AppenderRef ref="Exception"/>
+        </Logger>
+    </loggers>
+</configuration>
