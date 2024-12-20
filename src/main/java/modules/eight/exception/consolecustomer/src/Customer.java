@@ -1,4 +1,4 @@
-package modules.seven.exception.consolecustomer.src;
+package modules.eight.exception.consolecustomer.src;
 
 public class Customer
 {

@@ -1,4 +1,4 @@
-package modules.seven.exception.homework;
+package modules.eight.exception.homework;
 
 import java.util.ArrayList;
 

@@ -2,10 +2,10 @@ package seven.metro;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
-import modules.seven.testing.metro.RouteCalculator;
-import modules.seven.testing.metro.StationIndex;
-import modules.seven.testing.metro.core.Line;
-import modules.seven.testing.metro.core.Station;
+import modules.eight.metro.RouteCalculator;
+import modules.eight.metro.StationIndex;
+import modules.eight.metro.core.Line;
+import modules.eight.metro.core.Station;
 
 import java.util.ArrayList;
 import java.util.List;

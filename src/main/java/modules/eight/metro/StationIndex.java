@@ -1,7 +1,7 @@
-package modules.seven.testing.metro;
+package modules.eight.metro;
 
-import modules.seven.testing.metro.core.Line;
-import modules.seven.testing.metro.core.Station;
+import modules.eight.metro.core.Line;
+import modules.eight.metro.core.Station;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,9 +1,9 @@
-package modules.seven.exception.bank.account;
+package modules.eight.exception.bank.account;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import modules.seven.exception.bank.exception.InsufficientFundsException;
+import modules.eight.exception.bank.exception.InsufficientFundsException;
 
 @AllArgsConstructor
 @Getter

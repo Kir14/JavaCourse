@@ -1,4 +1,4 @@
-package modules.seven.exception.consolecustomer.src;
+package modules.eight.exception.consolecustomer.src;
 
 /*
 Пропишите в проекте ConsoleCustomerList все возможные варианты защиты от некорректной работы и её преждевременного завершения.

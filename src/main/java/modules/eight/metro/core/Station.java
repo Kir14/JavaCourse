@@ -1,4 +1,4 @@
-package modules.seven.testing.metro.core;
+package modules.eight.metro.core;
 
 public class Station implements Comparable<Station>
 {

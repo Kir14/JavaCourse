@@ -1,7 +1,7 @@
-package modules.seven.exception.bank;
+package modules.eight.exception.bank;
 
-import modules.seven.exception.bank.account.BankAccount;
-import modules.seven.exception.bank.exception.InsufficientFundsException;
+import modules.eight.exception.bank.account.BankAccount;
+import modules.eight.exception.bank.exception.InsufficientFundsException;
 
 public class MainBank {
     public static void main(String[] args) {

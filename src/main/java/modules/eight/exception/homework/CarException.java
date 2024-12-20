@@ -1,4 +1,4 @@
-package modules.seven.exception.homework;
+package modules.eight.exception.homework;
 
 public class CarException extends Exception {
     private String message;

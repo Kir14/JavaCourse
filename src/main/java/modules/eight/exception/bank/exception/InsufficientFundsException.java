@@ -1,4 +1,4 @@
-package modules.seven.exception.bank.exception;
+package modules.eight.exception.bank.exception;
 
 public class InsufficientFundsException extends Exception {
 
