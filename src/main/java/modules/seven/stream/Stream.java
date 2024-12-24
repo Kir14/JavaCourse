@@ -18,7 +18,8 @@ public class Stream {
         System.out.println("###  Задание 1: Фильтрация и преобразование");
         //1. Создайте список строк
         List<String> names = Arrays.asList("Anna", "Mark", "Paul", "Peter", "Maria", "John", "Anastasia");
-        System.out.println(names.stream().collect(Collectors.joining(", ")));
+        System.out.println(names.stream()
+                .collect(Collectors.joining(", ")));
 
         /*
         2. Используйте Stream API, чтобы:
@@ -39,7 +40,9 @@ public class Stream {
         System.out.println("\n### Задание 2: Преобразование и подсчёт");
         //1. Создайте список чисел
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        System.out.println(numbers.stream().map(String::valueOf).collect(Collectors.joining(", ")));
+        System.out.println(numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ")));
 
         /*
         2. Используйте Stream API, чтобы:
