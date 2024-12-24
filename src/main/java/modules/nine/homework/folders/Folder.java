@@ -14,15 +14,15 @@ public class Folder {
      */
     public static void copyTo(Path pathFrom, Path pathTo) {
         try {
-        if (Files.isDirectory(pathFrom)) {
-            pathTo = Paths.get(pathTo.toString() + "\\" + pathFrom.getFileName());
-            Files.createDirectories(pathTo);
-            copy(pathFrom, pathTo);
-        } else {
+            if (Files.isDirectory(pathFrom)) {
+                pathTo = Paths.get(pathTo + "\\" + pathFrom.getFileName());
+                Files.createDirectories(pathTo);
+                copy(pathFrom, pathTo);
+            } else {
 
                 Files.createDirectories(pathTo);
-                Files.copy(pathFrom, Paths.get(pathTo.toString() + "\\" +  pathFrom.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-        }
+                Files.copy(pathFrom, Paths.get(pathTo + "\\" + pathFrom.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,10 +40,8 @@ public class Folder {
                     Files.createDirectories(pathTo);
                 }
 
-                try (Stream<Path> files = Files.list(pathFrom);) {
-                    files.forEach(file -> {
-                        copy(file, pathTo.resolve(pathFrom.relativize(file)));
-                    });
+                try (Stream<Path> files = Files.list(pathFrom)) {
+                    files.forEach(file -> copy(file, pathTo.resolve(pathFrom.relativize(file))));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
