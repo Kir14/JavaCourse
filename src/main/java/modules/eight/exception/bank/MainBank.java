@@ -44,9 +44,7 @@ public class MainBank {
         System.out.println();
         try{
             accountOne.transfer(null , 12);
-        } catch (NullPointerException ex) {
-            System.out.println(ex.getMessage());
-        } catch (InsufficientFundsException ex) {
+        } catch (NullPointerException | InsufficientFundsException ex) {
             System.out.println(ex.getMessage());
         }
 
@@ -70,7 +68,6 @@ public class MainBank {
         } catch (NullPointerException | IllegalArgumentException | InsufficientFundsException ex) {
             System.out.println(ex.getMessage());
         }
-
 
     }
 }
