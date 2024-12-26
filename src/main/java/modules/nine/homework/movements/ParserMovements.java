@@ -47,14 +47,16 @@ public class ParserMovements {
                 if (!arr[7].equals("0")) {
                     putCreditOperation(arr);
                 }
-                debit += Double.parseDouble(arr[6].replace("\"", ""));
+                debit += Double.parseDouble(arr[6]);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-
+    /*
+    ',' is replaced by '.' in digit in "", delete '*' from line,
+     */
     private String modifyLine(String line) {
         int indexStart = line.indexOf("\"");
         while (indexStart != -1) {
@@ -96,7 +98,7 @@ public class ParserMovements {
         return Arrays.stream(description)
                 .limit(count)
                 .skip(1)
-                .map(line -> { //Для короткого названия
+                .map(line -> { //Get short organisation name
                     String[] parts = line.split("\\\\");
                     line = parts[parts.length - 1];
                     return line;
