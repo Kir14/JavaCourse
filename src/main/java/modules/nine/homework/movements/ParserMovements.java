@@ -61,7 +61,6 @@ public class ParserMovements {
         int indexStart = line.indexOf("\"");
         while (indexStart != -1) {
             int indexEnd = line.indexOf("\"", indexStart + 1);
-
             String tmp = line.substring(indexStart + 1, indexEnd);
             String tmpNew = tmp.replaceAll(",", ".");
             line = line.replace("\"" + tmp + "\"", tmpNew);
