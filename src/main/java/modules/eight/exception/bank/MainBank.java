@@ -19,7 +19,7 @@ public class MainBank {
         try{
             accountOne.withdraw(12);
         } catch (InsufficientFundsException ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -28,7 +28,7 @@ public class MainBank {
         try{
             accountOne.withdraw(-5);
         } catch (InsufficientFundsException ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
