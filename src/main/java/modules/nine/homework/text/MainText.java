@@ -81,7 +81,9 @@ public class MainText {
                     .forEach(topic -> Arrays.stream(topic)
                             .forEach(sentence -> {
                                 String[] words = TextFormatter.getWords(sentence);
-                                if (Arrays.stream(words).map(String::toLowerCase).anyMatch(black::contains)) {
+                                if (Arrays.stream(words)
+                                        .map(String::toLowerCase)
+                                        .anyMatch(black::contains)) {
                                     errorSentences.add(sentence);
                                 }
                             }));
