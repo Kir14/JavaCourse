@@ -29,7 +29,7 @@ public class JsoupParser {
     private String pathSave;
 
     //public HashMap<String, Station> linkStation;
-    public ArrayList<Station> stations;
+    //public ArrayList<Station> stations;
     //public ArrayList<Station> existStations;
     public HashMap<String, Line> lines;
     public HashMap<Station, ArrayList<CustomPair>> connectionsAll;
@@ -41,7 +41,7 @@ public class JsoupParser {
         this.pathSave = pathSave;
         //linkStation = new HashMap<>();
         lines = new HashMap<>();
-        stations = new ArrayList<>();
+        //stations = new ArrayList<>();
         connectionsAll = new HashMap<>();
         connections = new ArrayList<>();
         //existStations = new ArrayList<>();
@@ -62,8 +62,8 @@ public class JsoupParser {
             Elements columns = row.select("td");
             if (!columns.isEmpty()) {
                 Line line = getLine(columns.get(0));
-                Station station = getStation(columns.get(1), line.getNumberLine());
-                stations.add(station);
+                Station station = getStation(columns.get(1), line);
+                line.stations.add(station);
                 getConnectionsAll(station, columns.get(3));
             }
         }
@@ -82,8 +82,8 @@ public class JsoupParser {
             for (CustomPair pair : conn.getValue()) {
                 Line line = lines.get(pair.linkLine);
                 if (line != null) {
-                    Station station = stations.stream()
-                            .filter(s -> s.getLineNumber().equals(line.getNumberLine()) && s.getNameStation().equals(pair.nameStation))
+                    Station station = line.stations.stream()
+                            .filter(s -> s.getNameStation().equals(pair.nameStation))
                             .findFirst()
                             .orElse(null);
                     if (station != null) {
@@ -120,7 +120,7 @@ public class JsoupParser {
         }
     }
 
-    private Station getStation(Element element, int line) {
+    private Station getStation(Element element, Line line) {
         String nameStation = element.select("a").text();
         /*Station station = new Station(nameStation, line);
         if(linkStation.containsKey(link)){

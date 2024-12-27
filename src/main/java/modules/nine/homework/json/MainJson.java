@@ -35,6 +35,9 @@ public class MainJson {
     public static void main(String[] args) {
         JsoupParser jsoup = new JsoupParser("src/main/java/modules/nine/homework/json/data/site.html", "");
         jsoup.saveData();
-        System.out.println();
+        System.out.println(jsoup.lines.values().stream()
+                .mapToLong(line -> line.stations.size())
+                .sum()
+        );
     }
 }

@@ -6,8 +6,16 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Station {
     private String nameStation;
-    private Integer lineNumber;
+    //private Integer lineNumber;
+    private Line line;
+
+    @Override
+    public String toString() {
+        return "Station{" +
+                "nameStation='" + nameStation + '\'' +
+                ", line=" + line.getNumberLine() +
+                '}';
+    }
 }
