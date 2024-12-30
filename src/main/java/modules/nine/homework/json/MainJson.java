@@ -35,41 +35,37 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Comparator;
 
 public class MainJson {
     public static void main(String[] args) {
-        JsoupParser jsoup = new JsoupParser("src/main/java/modules/nine/homework/json/data/site.html", "");
+        JsoupParser jsoup = new JsoupParser("src/main/java/modules/nine/homework/json/data/site.html");
         jsoup.saveData();
         System.out.println("Количество всего станций: " + jsoup.lines.values().stream()
                 .mapToLong(line -> line.stations.size())
                 .sum()
         );
-        for (Map.Entry<String, Line> line : jsoup.lines.entrySet()) {
-            System.out.println(line.getValue().getNameLine() + ", количество станций: "
-                    + line.getValue().stations.stream()
-                    .count());
-        }
+        jsoup.lines.values().stream()
+                .sorted(Comparator.comparing(Line::getNumberLine))
+                .forEach(line -> System.out.println(line.getNameLine() + ", количество станций: "
+                        + line.stations.size())
+                );
+        System.out.println("Количество переходов: " + jsoup.connections.size());
 
-        JsonParser json = new JsonParser(new ArrayList<>(jsoup.lines.values()), jsoup.connections);
-        json.writeSubway();
-        json.lines.clear();
-        json.connections.clear();
-        // JsonParser json = new JsonParser();
+        JsonParser.writeSubway(new ArrayList<>(jsoup.lines.values()), jsoup.connections);
+
         try {
-            json.readFile("src/main/java/modules/nine/homework/json/data/map.json");
+            JsonParser json = new JsonParser("src/main/java/modules/nine/homework/json/data/map.json");
             System.out.println("Количество всего станций: " + json.lines.stream()
                     .mapToLong(line -> line.stations.size())
                     .sum()
             );
             json.lines.forEach(line ->
                     System.out.println(line.getNameLine() + ", количество станций: "
-                            + line.stations.stream()
-                            .count())
+                            + line.stations.size())
             );
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
+            System.out.println("Количество переходов: " + json.connections.size());
+        } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
 

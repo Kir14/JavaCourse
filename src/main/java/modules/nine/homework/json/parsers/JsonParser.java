@@ -8,7 +8,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,28 +16,25 @@ import java.util.Comparator;
 
 public class JsonParser {
 
+    private String path;
     public ArrayList<Line> lines;
     public ArrayList<ArrayList<Station>> connections;
 
-    public JsonParser(ArrayList<Line> lines, ArrayList<ArrayList<Station>> connections) {
-        lines.sort(Comparator.comparing(Line::getNumberLine));
-        this.lines = lines;
-        this.connections = connections;
+    public JsonParser(String path) throws IOException, ParseException {
+        this.path = path;
+        readFile();
     }
 
-    public JsonParser() {
-        lines = new ArrayList<>();
-        connections = new ArrayList<>();
-    }
-
-    public void writeSubway() {
-        JSONObject main = new JSONObject();
-        main.put("stations", getStations());
-        main.put("lines", getArrayLines());
-        main.put("connections", getArrayConnections());
-
+    public static void writeSubway(ArrayList<Line> lines, ArrayList<ArrayList<Station>> connections) {
         try {
             FileWriter fw = new FileWriter("src/main/java/modules/nine/homework/json/data/map.json");
+
+            lines.sort(Comparator.comparing(Line::getNumberLine));
+            JSONObject main = new JSONObject();
+            main.put("stations", getStations(lines));
+            main.put("lines", getArrayLines(lines));
+            main.put("connections", getArrayConnections(connections));
+
             fw.write(main.toJSONString());
             fw.flush();
             fw.close();
@@ -48,7 +44,7 @@ public class JsonParser {
 
     }
 
-    private JSONArray getArrayLines() {
+    private static JSONArray getArrayLines(ArrayList<Line> lines) {
         JSONArray linesJson = new JSONArray();
         lines.forEach(line -> {
             JSONObject obj = new JSONObject();
@@ -60,7 +56,7 @@ public class JsonParser {
     }
 
 
-    private JSONObject getStations() {
+    private static JSONObject getStations(ArrayList<Line> lines) {
         JSONObject main = new JSONObject();
         lines.forEach(line -> {
             JSONArray stations = new JSONArray();
@@ -72,7 +68,7 @@ public class JsonParser {
         return main;
     }
 
-    private JSONArray getArrayConnections() {
+    private static JSONArray getArrayConnections(ArrayList<ArrayList<Station>> connections) {
         JSONArray connectionsJson = new JSONArray();
         connections.forEach(node -> {
             JSONArray arr = new JSONArray();
@@ -88,7 +84,7 @@ public class JsonParser {
         return connectionsJson;
     }
 
-    public void readFile(String path) throws IOException, ParseException {
+    public void readFile() throws IOException, ParseException {
         JSONObject object = (JSONObject) new JSONParser().parse(new FileReader(path));
         lines = parseLines((JSONArray) object.get("lines"));
         parseStation(lines, (JSONObject) object.get("stations"));
@@ -116,7 +112,11 @@ public class JsonParser {
                             .orElse(null);
                     if (curStation != null) {
                         nodeStations.add(curStation);
+                    } else {
+                        System.out.println("Не найдена станция " + nameStation);
                     }
+                } else {
+                    System.out.println("Не найдена линия с номером " + lineNumber);
                 }
             });
             arrConnections.add(nodeStations);

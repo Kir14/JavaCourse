@@ -26,48 +26,41 @@ public class JsoupParser {
     }
 
     private String pathSource;
-    private String pathSave;
 
-    //public HashMap<String, Station> linkStation;
-    //public ArrayList<Station> stations;
-    //public ArrayList<Station> existStations;
     public HashMap<String, Line> lines;
     public HashMap<Station, ArrayList<CustomPair>> connectionsAll;
     public ArrayList<ArrayList<Station>> connections;
 
 
-    public JsoupParser(String pathSource, String pathSave) {
+    public JsoupParser(String pathSource) {
         this.pathSource = pathSource;
-        this.pathSave = pathSave;
-        //linkStation = new HashMap<>();
         lines = new HashMap<>();
-        //stations = new ArrayList<>();
         connectionsAll = new HashMap<>();
         connections = new ArrayList<>();
-        //existStations = new ArrayList<>();
     }
 
     public void saveData() {
         Document doc;
         try {
-            doc = Jsoup.parse(new File("src/main/java/modules/nine/homework/json/data/site.html"), "UTF-8");
+            doc = Jsoup.parse(new File(pathSource), "UTF-8");
+
+            Element tableBody = doc.select("table[class=\"standard sortable\"]")
+                    .getFirst()
+                    .select("tbody")
+                    .getFirst();
+            for (Element row : tableBody.select("tr")) {
+                Elements columns = row.select("td");
+                if (!columns.isEmpty()) {
+                    Line line = getLine(columns.get(0));
+                    Station station = getStation(columns.get(1), line);
+                    line.stations.add(station);
+                    getConnectionsAll(station, columns.get(3));
+                }
+            }
+            createConnections();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Element tableBody = doc.select("table[class=\"standard sortable\"]")
-                .getFirst()
-                .select("tbody")
-                .getFirst();
-        for (Element row : tableBody.select("tr")) {
-            Elements columns = row.select("td");
-            if (!columns.isEmpty()) {
-                Line line = getLine(columns.get(0));
-                Station station = getStation(columns.get(1), line);
-                line.stations.add(station);
-                getConnectionsAll(station, columns.get(3));
-            }
-        }
-        createConnections();
     }
 
     private void createConnections() {
@@ -122,12 +115,6 @@ public class JsoupParser {
 
     private Station getStation(Element element, Line line) {
         String nameStation = element.select("a").text();
-        /*Station station = new Station(nameStation, line);
-        if(linkStation.containsKey(link)){
-            existStations.add(station);
-        }
-        linkStation.put(link, station);
-        return station;*/
         return new Station(nameStation, line);
     }
 
