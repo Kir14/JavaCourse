@@ -5,7 +5,11 @@ import modules.nine.homework.json.classes.Line;
 import modules.nine.homework.json.classes.Station;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +24,11 @@ public class JsonParser {
         lines.sort(Comparator.comparing(Line::getNumberLine));
         this.lines = lines;
         this.connections = connections;
+    }
+
+    public JsonParser() {
+        lines = new ArrayList<>();
+        connections = new ArrayList<>();
     }
 
     public void writeSubway() {
@@ -70,7 +79,7 @@ public class JsonParser {
             node.sort(Comparator.comparing(o -> o.getLine().getNumberLine()));
             node.forEach(station -> {
                 JSONObject object = new JSONObject();
-                object.put("line", station.getLine().getNumberLine().toString());
+                object.put("line", station.getLine().getNumberLine());
                 object.put("station", station.getNameStation());
                 arr.add(object);
             });
@@ -79,5 +88,62 @@ public class JsonParser {
         return connectionsJson;
     }
 
+    public void readFile(String path) throws IOException, ParseException {
+        JSONObject object = (JSONObject) new JSONParser().parse(new FileReader(path));
+        lines = parseLines((JSONArray) object.get("lines"));
+        parseStation(lines, (JSONObject) object.get("stations"));
+        connections = parseConnections(lines, (JSONArray) object.get("connections"));
+        System.out.println();
+    }
 
+    private ArrayList<ArrayList<Station>> parseConnections(ArrayList<Line> lines, JSONArray connectionsJSON) {
+        ArrayList<ArrayList<Station>> arrConnections = new ArrayList<>();
+        connectionsJSON.forEach(arr -> {
+            JSONArray node = (JSONArray) arr;
+            ArrayList<Station> nodeStations = new ArrayList<>();
+            node.forEach(obj -> {
+                JSONObject station = (JSONObject) obj;
+                int lineNumber = ((Long) station.get("line")).intValue();
+                String nameStation = (String) station.get("station");
+                Line line = lines.stream()
+                        .filter(l -> l.getNumberLine().equals(lineNumber))
+                        .findFirst()
+                        .orElse(null);
+                if (line != null) {
+                    Station curStation = line.stations.stream()
+                            .filter(s -> s.getNameStation().equals(nameStation))
+                            .findFirst()
+                            .orElse(null);
+                    if (curStation != null) {
+                        nodeStations.add(curStation);
+                    }
+                }
+            });
+            arrConnections.add(nodeStations);
+        });
+
+        return arrConnections;
+    }
+
+    private void parseStation(ArrayList<Line> lines, JSONObject stationsJSON) {
+        lines.forEach(line -> {
+            JSONArray arrStation = (JSONArray) stationsJSON.get(line.getNumberLine().toString());
+            arrStation.forEach(stationName -> {
+                Station station = new Station((String) stationName, line);
+                line.stations.add(station);
+            });
+        });
+    }
+
+    private ArrayList<Line> parseLines(JSONArray linesJson) {
+        ArrayList<Line> arrLines = new ArrayList<>();
+        linesJson.forEach(obj -> {
+            JSONObject jo = (JSONObject) obj;
+            Line line = new Line();
+            line.setNameLine((String) jo.get("name"));
+            line.setNumberLine(((Long) jo.get("number")).intValue());
+            arrLines.add(line);
+        });
+        return arrLines;
+    }
 }

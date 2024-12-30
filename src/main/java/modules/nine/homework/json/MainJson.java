@@ -28,21 +28,50 @@ Document doc = Jsoup.connect(URL).maxBodySize(0).get();
 
  */
 
+import modules.nine.homework.json.classes.Line;
 import modules.nine.homework.json.parsers.JsonParser;
 import modules.nine.homework.json.parsers.JsoupParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class MainJson {
     public static void main(String[] args) {
         JsoupParser jsoup = new JsoupParser("src/main/java/modules/nine/homework/json/data/site.html", "");
         jsoup.saveData();
-        System.out.println(jsoup.lines.values().stream()
+        System.out.println("Количество всего станций: " + jsoup.lines.values().stream()
                 .mapToLong(line -> line.stations.size())
                 .sum()
         );
+        for (Map.Entry<String, Line> line : jsoup.lines.entrySet()) {
+            System.out.println(line.getValue().getNameLine() + ", количество станций: "
+                    + line.getValue().stations.stream()
+                    .count());
+        }
+
         JsonParser json = new JsonParser(new ArrayList<>(jsoup.lines.values()), jsoup.connections);
         json.writeSubway();
+        json.lines.clear();
+        json.connections.clear();
+        // JsonParser json = new JsonParser();
+        try {
+            json.readFile("src/main/java/modules/nine/homework/json/data/map.json");
+            System.out.println("Количество всего станций: " + json.lines.stream()
+                    .mapToLong(line -> line.stations.size())
+                    .sum()
+            );
+            json.lines.forEach(line ->
+                    System.out.println(line.getNameLine() + ", количество станций: "
+                            + line.stations.stream()
+                            .count())
+            );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }
