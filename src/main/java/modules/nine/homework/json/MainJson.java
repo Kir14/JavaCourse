@@ -31,6 +31,8 @@ Document doc = Jsoup.connect(URL).maxBodySize(0).get();
 import modules.nine.homework.json.parsers.JsonParser;
 import modules.nine.homework.json.parsers.JsoupParser;
 
+import java.util.ArrayList;
+
 public class MainJson {
     public static void main(String[] args) {
         JsoupParser jsoup = new JsoupParser("src/main/java/modules/nine/homework/json/data/site.html", "");
@@ -39,5 +41,8 @@ public class MainJson {
                 .mapToLong(line -> line.stations.size())
                 .sum()
         );
+        JsonParser json = new JsonParser(new ArrayList<>(jsoup.lines.values()), jsoup.connections);
+        json.writeSubway();
+
     }
 }
