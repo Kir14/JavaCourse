@@ -1,5 +1,8 @@
 package modules.ten.hibernate;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import modules.ten.hibernate.entity.Course;
 import modules.ten.hibernate.entity.LinkedPurchaseList;
 import modules.ten.hibernate.entity.Purchase;
@@ -44,6 +47,7 @@ public class Main {
 
         String hql = "From " + Purchase.class.getSimpleName();
         List<Purchase> purchases = session.createQuery(hql, Purchase.class).getResultList();
+        List<Course> courses = session.createQuery("From " + Course.class.getSimpleName(), Course.class).getResultList();
         for (Purchase purchase : purchases) {
             LinkedPurchaseList linkedPurchaseList = new LinkedPurchaseList();
 
@@ -53,11 +57,25 @@ public class Main {
             Student student = (Student) query.getSingleResult();
             linkedPurchaseList.setStudentId(student.getId());
 
-            hql = "FROM " + Course.class.getSimpleName() + " WHERE name = :name";
+           /* hql = "FROM " + Course.class.getSimpleName() + " WHERE name = :name";
             query = session.createQuery(hql, Course.class);
             query.setParameter("name", purchase.getCourseName());
-            Course course = (Course) query.getSingleResult();
-            linkedPurchaseList.setCourseId(course.getId());
+            Course course = (Course) query.getSingleResult();*/
+
+            /*linkedPurchaseList.setCourseId(courses.stream()
+                    .filter(o -> o.getName().equals(purchase.getCourseName()))
+                    .findFirst()
+                    .orElseThrow(() -> new RuntimeException("No entity found"))
+                    .getId()
+            );*/
+
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<Course> criteriaQuery = builder.createQuery(Course.class);
+            Root<Course> root = criteriaQuery.from(Course.class);
+            criteriaQuery.select(root).where(builder.equal(root.get("name"), purchase.getCourseName()));
+            Course courseCurr = session.createQuery(criteriaQuery).getSingleResult();
+            linkedPurchaseList.setCourseId(courseCurr.getId());
+
             session.save(linkedPurchaseList);
         }
 

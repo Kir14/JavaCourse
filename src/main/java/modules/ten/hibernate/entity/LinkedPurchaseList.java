@@ -15,8 +15,8 @@ import lombok.Setter;
 public class LinkedPurchaseList {
 
     @Id
-    private int studentId;
+    private Integer studentId;
     @Id
-    private int courseId;
+    private Integer courseId;
 
 }
