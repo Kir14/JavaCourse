@@ -14,11 +14,12 @@
         <!--  Set the current session context  -->
         <property name="current_session_context_class">thread</property>
         <!--  Drop and re-create the database schema on startup  -->
-        <property name="hbm2ddl.auto">validate</property>
+        <property name="hbm2ddl.auto">update</property>
         <mapping class="modules.ten.hibernate.entity.Course"/>
         <mapping class="modules.ten.hibernate.entity.Purchase"/>
         <mapping class="modules.ten.hibernate.entity.Student"/>
         <mapping class="modules.ten.hibernate.entity.Subscription"/>
         <mapping class="modules.ten.hibernate.entity.Teacher"/>
+        <mapping class="modules.ten.hibernate.entity.LinkedPurchaseList"/>
     </session-factory>
 </hibernate-configuration>
