@@ -16,5 +16,9 @@
         <!--  Drop and re-create the database schema on startup  -->
         <property name="hbm2ddl.auto">validate</property>
         <mapping class="modules.ten.hibernate.entity.Course"/>
+        <mapping class="modules.ten.hibernate.entity.Purchase"/>
+        <mapping class="modules.ten.hibernate.entity.Student"/>
+        <mapping class="modules.ten.hibernate.entity.Subscription"/>
+        <mapping class="modules.ten.hibernate.entity.Teacher"/>
     </session-factory>
 </hibernate-configuration>
